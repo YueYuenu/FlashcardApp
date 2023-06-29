@@ -1,5 +1,5 @@
-# Created by https://www.toptal.com/developers/gitignore/api/windows,csharp,angular
-# Edit at https://www.toptal.com/developers/gitignore?templates=windows,csharp,angular
+# Created by https://www.toptal.com/developers/gitignore/api/csharp,windows,angular
+# Edit at https://www.toptal.com/developers/gitignore?templates=csharp,windows,angular
 
 ### Angular ###
 ## Angular ##
@@ -197,6 +197,7 @@ nCrunchTemp_*
 AutoTest.Net/
 
 # Web workbench (sass)
+.sass-cache/
 
 # Installshield output folder
 [Ee]xpress/
@@ -450,8 +451,5 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-# End of https://www.toptal.com/developers/gitignore/api/windows,csharp,angular
-/angularapp
-/FlashcardApp.Data/Migrations/20230609141501_firstMigration.cs
-/FlashcardApp.Data/Migrations/20230609141501_firstMigration.Designer.cs
-/FlashcardApp.Data/Migrations/DataContextModelSnapshot.cs
+# End of https://www.toptal.com/developers/gitignore/api/csharp,windows,angular
+/FlashcardApp.Data/Migrations

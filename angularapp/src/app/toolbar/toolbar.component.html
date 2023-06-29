@@ -1,0 +1,30 @@
+<mat-toolbar color="primary">
+    <button mat-icon-button [matMenuTriggerFor]="menu" class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>Flashcard App</span>
+    <span class="toolbar-spacer"></span>
+    <!-- <button mat-icon-button routerLink="" aria-label="UserIcon">
+      <mat-icon>person</mat-icon>
+    </button>
+  </mat-toolbar> -->
+
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item routerLink="listFlashcards">
+        <mat-icon>reorder</mat-icon>
+        <span>List of Flashcards</span>
+    </button>
+    <button mat-menu-item routerLink="addFlashcards">
+        <mat-icon>add</mat-icon>
+        <span>Add new Flashcards</span>
+    </button>
+    <button mat-menu-item routerLink="editFlashcards">
+        <mat-icon>edit</mat-icon>
+        <span>Edit Flashcards</span>
+    </button>
+    <button mat-menu-item routerLink="removeFlashcards">
+        <mat-icon>delete</mat-icon>
+        <span>Remove Flashcards</span>
+    </button>
+</mat-menu>
+  
