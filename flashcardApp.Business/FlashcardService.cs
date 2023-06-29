@@ -7,11 +7,6 @@ namespace flashcardApp.Business
     {
         public IEFFlashcardRepo EFFlashcardRepo { get; }
 
-        //create card
-        //get card(s)
-        //search cards?
-        //update card
-        //delete card
         public FlashcardService(IEFFlashcardRepo eFFlashcardRepo)
         {
             EFFlashcardRepo = eFFlashcardRepo;
@@ -19,14 +14,6 @@ namespace flashcardApp.Business
 
         public async Task<Flashcard> CreateFlashcardAsync(Flashcard flashcard)
         {
-            /*            Flashcard Flashdto = new()
-                        {
-                            Answer = flashcard.Answer,
-                            Question = flashcard.Question,
-                        };
-                        await EFFlashcardRepo.CreateFlashcardAsync(Flashdto);
-                        await EFFlashcardRepo.SaveChangesAsync();
-                        return Flashdto;*/
             await EFFlashcardRepo.CreateFlashcardAsync(flashcard);
             await EFFlashcardRepo.SaveChangesAsync();
             return flashcard;
@@ -47,7 +34,7 @@ namespace flashcardApp.Business
             return EFFlashcardRepo.SearchFlashcards(query);
         }
 
-        public async Task<Flashcard> UpdateFlashcardAsync(int id, Flashcard flashcard)
+        public async Task<Flashcard> UpdateFlashcardAsync(int id, Flashcard flashcard) //TODO add check for correct id before update attempt
         {
             id = flashcard.Id;
             Flashcard flashcard1 = GetFlashcardById(id);
