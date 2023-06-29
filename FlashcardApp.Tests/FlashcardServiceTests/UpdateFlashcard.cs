@@ -14,31 +14,23 @@ namespace FlashcardApp.Tests.FlashcardServiceTests
 
             //Act
             await _flashcardService.UpdateFlashcardAsync(1, card);
+            Flashcard Updated = _flashcardService.GetFlashcardById(1);
 
             //Assert
-            _flashcardRepo.Verify(x => x.UpdateFlashcard(card), Times.Once);
             _flashcardRepo.Verify(x => x.SaveChangesAsync(), Times.Once);
-            Assert.Equal("replace question1", card.Question);
+            Assert.Equal("replace question1", Updated.Question);
         }
 
         [Fact]
         public async void No_existing_Flashcard_found()
         {
             //Arrange
-            Flashcard card = new() { Id = 1, Question = "replace question1", Answer = "replace answer1" };
+            Flashcard card = new() { Id = 5, Question = "replace question1", Answer = "replace answer1" };
+
             //Act
-            await _flashcardService.UpdateFlashcardAsync(5, card);
 
             //Assert
-            _flashcardRepo.Verify(x => x.UpdateFlashcard(card), Times.Never);
-        }
-
-        [Fact]
-        public void Card_Id_Missmatch() //TODO add check for correct id before update attempt
-        {
-            //Arrange
-            //Act
-            //Assert
+            await Assert.ThrowsAsync<Exception>(async () => await _flashcardService.UpdateFlashcardAsync(5, card));
         }
     }
 }
