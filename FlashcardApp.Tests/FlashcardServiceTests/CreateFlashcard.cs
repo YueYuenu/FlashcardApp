@@ -1,8 +1,8 @@
 using flashcardApp.Domain.Models;
 
-namespace FlashcardApp.Tests.FlashcardService.Tests
+namespace FlashcardApp.Tests.FlashcardServiceTests
 {
-    public class CreateFlashcard : Usings
+    public class CreateFlashcard : Base
     {
         [Fact]
         public async void Card_is_Created()

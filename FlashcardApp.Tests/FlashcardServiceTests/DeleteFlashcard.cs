@@ -1,11 +1,11 @@
 ﻿using flashcardApp.Domain.Models;
 
-namespace FlashcardApp.Tests.FlashcardService.Tests
+namespace FlashcardApp.Tests.FlashcardServiceTests
 {
-    public class GetFlashcards : Usings
+    public class DeleteFlashcard : Base
     {
         [Fact]
-        public void Get_List_of_Cards()
+        public async void Card_gets_deleted()
         {
             //Arrange
             List<Flashcard> list = new()
@@ -15,11 +15,12 @@ namespace FlashcardApp.Tests.FlashcardService.Tests
                 new Flashcard {Id = 3,  Question = "question3", Answer = "answer3"}
             };
 
-            _flashcardRepo.Setup(x => x.GetFlashcards()).Returns(list.AsQueryable());
+            _flashcardRepo.Setup(x => x.GetFlashcardById(2)).Returns(new Flashcard { Id = 2, Question = "question2", Answer = "answer2" });
             //Act
+            await _flashcardService.DeleteById(2);
 
             //Assert
-            Assert.Equal(3, _flashcardService.GetFlashcards().Count());
+            _flashcardRepo.Verify(x => x.DeleteById(2), Times.Once);
         }
     }
 }

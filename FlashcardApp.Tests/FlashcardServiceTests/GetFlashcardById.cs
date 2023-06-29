@@ -1,8 +1,8 @@
 ﻿using flashcardApp.Domain.Models;
 
-namespace FlashcardApp.Tests.FlashcardService.Tests
+namespace FlashcardApp.Tests.FlashcardServiceTests
 {
-    public class GetFlashcardById : Usings
+    public class GetFlashcardById : Base
     {
         [Fact]
         public void Get_Flashcard_by_Id()

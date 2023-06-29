@@ -1,8 +1,8 @@
 ﻿using flashcardApp.Domain.Models;
 
-namespace FlashcardApp.Tests.FlashcardService.Tests
+namespace FlashcardApp.Tests.FlashcardServiceTests
 {
-    public class UpdateFlashcard : Usings
+    public class UpdateFlashcard : Base
     {
         [Fact]
         public async Task Update_existing_FlashcardAsync()
