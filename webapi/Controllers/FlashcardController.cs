@@ -8,12 +8,6 @@ namespace webapi.Controllers
     [ApiController]
     public class FlashcardController : ControllerBase
     {
-        //create card
-        //get card(s)
-        //get by id
-        //search cards?
-        //update card
-        //delete card
         private readonly IFlashcardService _flashcardService;
 
         public FlashcardController(IFlashcardService flashcardService)
