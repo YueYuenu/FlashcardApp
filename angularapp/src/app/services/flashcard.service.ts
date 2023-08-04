@@ -5,26 +5,25 @@ import Flashcard from '../models/Flashcard';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class FlashcardService {
+    url: string = environment.apiUrl + 'FlashcardController/';
+    constructor(private http: HttpClient) { }
 
-  url: string = environment.apiUrl + 'FlashcardController/';
-  constructor(private http: HttpClient) { }
+    EditCard(editFlashcard: Flashcard): Observable<any> {
+        return this.http.put<Flashcard>(this.url + 'UpdateFlashcard', editFlashcard, { observe: 'response' });
+    }
 
-  EditCard(editFlashcard: Flashcard): Observable<any> {
-    return this.http.put<Flashcard>(this.url + 'UpdateFlashcard' , editFlashcard, { observe: 'response' });
-  }
+    AddCard(flashcard: Flashcard): Observable<any> {
+        return this.http.post<Flashcard>(this.url + 'CreateFlashcard', flashcard, { observe: 'response' });
+    }
 
-  AddCard(flashcard: Flashcard): Observable<any> {
-    return this.http.post<Flashcard>(this.url + 'CreateFlashcard' , flashcard, { observe: 'response' });
-  }
+    GetAllCards(): Observable<Flashcard[]> {
+        return this.http.get<Flashcard[]>(this.url + 'GetAllFlashcards');
+    }
 
-  GetAllCards(): Observable<Flashcard[]> {
-    return this.http.get<Flashcard[]>(this.url + 'GetAllFlashcards');
-  }
-
-  GetCardsById(cardId: number): Observable<Flashcard> {
-    return this.http.get<Flashcard>(this.url + 'GetFlashcardById?id=' + cardId);
-  }
+    GetCardsById(cardId: number): Observable<Flashcard> {
+        return this.http.get<Flashcard>(this.url + 'GetFlashcardById?id=' + cardId);
+    }
 }

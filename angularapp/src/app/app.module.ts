@@ -16,26 +16,26 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ToolbarComponent,
-    HomeComponent,
-    ListFlashcardsComponent,
-    AddFlashcardsComponent,
-    EditFlashcardsComponent,
-    DeleteFlashcardsComponent,
-    PageNotFoundComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    AppMaterialModule,
-    BrowserAnimationsModule,
-    ReactiveFormsModule,
+    declarations: [
+        AppComponent,
+        ToolbarComponent,
+        HomeComponent,
+        ListFlashcardsComponent,
+        AddFlashcardsComponent,
+        EditFlashcardsComponent,
+        DeleteFlashcardsComponent,
+        PageNotFoundComponent
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        AppMaterialModule,
+        BrowserAnimationsModule,
+        ReactiveFormsModule,
 
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

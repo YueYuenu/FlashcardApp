@@ -8,7 +8,7 @@ namespace FlashcardApp.Tests.FlashcardServiceTests
         public void Get_Flashcard_by_Id()
         {
             //Arrange
-            _flashcardRepo.Setup(x => x.GetFlashcardById(3)).Returns(new Flashcard() { Id = 3, Question = "", Answer = "" });
+            _flashcardRepo.Setup(x => x.GetFlashcardById(3)).Returns(new Flashcard() { Id = 3, Question = "test", Answer = "test" });
 
             //Act
             Flashcard cardId3 = _flashcardService.GetFlashcardById(3);
@@ -21,13 +21,12 @@ namespace FlashcardApp.Tests.FlashcardServiceTests
         public void Card_returns_null()
         {
             //Arrange
-            _flashcardRepo.Setup(x => x.GetFlashcardById(4));
+            _flashcardRepo.Setup(x => x.GetFlashcardById(4)).Returns(value: null);
 
             //Act
-            Flashcard cardIsNull = _flashcardService.GetFlashcardById(4);
 
             //Assert
-            Assert.Null(null);
+            Assert.Throws<Exception>(() => _flashcardService.GetFlashcardById(4));
         }
     }
 }

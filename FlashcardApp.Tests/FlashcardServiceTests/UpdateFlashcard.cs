@@ -60,5 +60,18 @@ namespace FlashcardApp.Tests.FlashcardServiceTests
             //Assert
             await Assert.ThrowsAsync<Exception>(async () => await _flashcardService.UpdateFlashcardAsync(5, card));
         }
+
+        [Fact]
+        public async void Card_is_NULL()
+        {
+            //Arrange
+            Flashcard card = new() { Id = 5, Question = "111", Answer = "111" };
+            _flashcardRepo.Setup(x => x.GetFlashcardById(5)).Returns(value: null);
+
+            //Act
+
+            //Assert
+            await Assert.ThrowsAsync<Exception>(async () => await _flashcardService.UpdateFlashcardAsync(5, card));
+        }
     }
 }

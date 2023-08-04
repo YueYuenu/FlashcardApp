@@ -1,23 +1,22 @@
 <p>
     <mat-toolbar>
-      <span>Add a new Flashcard</span>
+        <span>Add a new Flashcard</span>
     </mat-toolbar>
-  </p>
+</p>
 <div>
 
     <form class="newCardform" [formGroup]="cardForm">
         <mat-form-field class="full-width">
-          <mat-label>Question</mat-label>
-          <textarea matInput formControlName="Question" placeholder=""></textarea>
+            <mat-label>Question</mat-label>
+            <textarea matInput formControlName="Question" placeholder=""></textarea>
         </mat-form-field>
-      
+
         <mat-form-field class="full-width">
-          <mat-label>Answer</mat-label>
-          <textarea matInput formControlName="Answer" placeholder=""></textarea>
+            <mat-label>Answer</mat-label>
+            <textarea matInput formControlName="Answer" placeholder=""></textarea>
         </mat-form-field>
-      </form>
-      <button mat-raised-button color="primary" (click)="formSubmission()">
+    </form>
+    <button mat-raised-button color="primary" (click)="formSubmission()">
         <span>Add new Flashcard</span>
     </button>
 </div>
-  
