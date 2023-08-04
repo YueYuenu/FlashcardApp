@@ -26,12 +26,12 @@ namespace FlashcardApp.Domain.Interfaces
         /// <returns></returns>
         public Flashcard GetFlashcardById(int id);
 
-        /// <summary>
-        /// Search flashcard
-        /// </summary>
-        /// <param name="query"></param>
-        /// <returns></returns>
-        public Flashcard SearchFlashcards(string query);
+        /*        /// <summary>
+                /// Search flashcard
+                /// </summary>
+                /// <param name="query"></param>
+                /// <returns></returns>
+                public IEnumerable<Flashcard> SearchFlashcards(string query);*/
 
         /// <summary>
         /// Update/change flashcard

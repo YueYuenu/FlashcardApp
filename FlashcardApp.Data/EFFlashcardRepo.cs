@@ -28,10 +28,11 @@ namespace FlashcardApp.Data
             return _dataContext.Set<Flashcard>();
         }
 
-        public Flashcard SearchFlashcards(string query)
-        {
-            return (Flashcard)_dataContext.Set<Flashcard>().Where(x => x.Question == query || x.Answer == query);
-        }
+        /*        public IEnumerable<Flashcard> SearchFlashcards(string query)
+                {
+                    return _dataContext.Set<Flashcard>().Where(x => x.Question.Contains(query) || x.Answer.Contains(query));
+                    //return _dataContext.Set<Flashcard>().Where(x => x.Question.Contains(query, StringComparison.OrdinalIgnoreCase) || x.Answer.Contains(query, StringComparison.OrdinalIgnoreCase));
+                }*/
 
         public Flashcard UpdateFlashcard(Flashcard flashcard)
         {

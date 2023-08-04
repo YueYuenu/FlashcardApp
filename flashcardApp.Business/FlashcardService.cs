@@ -14,9 +14,19 @@ namespace flashcardApp.Business
 
         public async Task<Flashcard> CreateFlashcardAsync(Flashcard flashcard)
         {
-            await EFFlashcardRepo.CreateFlashcardAsync(flashcard);
-            await EFFlashcardRepo.SaveChangesAsync();
-            return flashcard;
+            if (flashcard != null)
+            {
+                if (flashcard.Question == null || flashcard.Answer == null)
+                    throw new Exception("Something gave null, please check the fields and try again");
+                if (flashcard.Question != string.Empty && flashcard.Answer != string.Empty)
+                {
+                    await EFFlashcardRepo.CreateFlashcardAsync(flashcard);
+                    await EFFlashcardRepo.SaveChangesAsync();
+                    return flashcard;
+                }
+                else throw new Exception("Something went wrong, could not create flashcard. Please check that the Question and Answer fields are not empty");
+            }
+            else throw new Exception("Something went wrong, could not create flashcard.");
         }
 
         public IEnumerable<Flashcard> GetFlashcards()
@@ -29,16 +39,19 @@ namespace flashcardApp.Business
             return EFFlashcardRepo.GetFlashcardById(id);
         }
 
-        public Flashcard SearchFlashcards(string query)
+        public IEnumerable<Flashcard> SearchFlashcards(string query)
         {
-            return EFFlashcardRepo.SearchFlashcards(query);
+            return GetFlashcards().Where(x => x.Question.Contains(query, StringComparison.OrdinalIgnoreCase)
+            || x.Answer.Contains(query, StringComparison.OrdinalIgnoreCase));
         }
 
-        public async Task<Flashcard> UpdateFlashcardAsync(int id, Flashcard flashcard) //TODO add check for correct id before update attempt
+        public async Task<Flashcard> UpdateFlashcardAsync(int id, Flashcard flashcard) //TODO add check for correct id before update attempt?
         {
             id = flashcard.Id;
             Flashcard flashcard1 = GetFlashcardById(id);
-            if (flashcard1 != null)
+            if (flashcard1 != null
+                && flashcard.Question != null | flashcard.Question != string.Empty
+                && flashcard.Answer != null | flashcard.Answer != string.Empty)
             {
                 flashcard1.Question = flashcard.Question;
                 flashcard1.Answer = flashcard.Answer;
@@ -47,7 +60,7 @@ namespace flashcardApp.Business
 
                 return flashcard1;
             }
-            else throw new Exception("something went wrong, could not update flashcard");
+            else throw new Exception("Something went wrong, could not update flashcard. Please check that the Question and Answer fields are not empty");
         }
 
         public async Task DeleteById(int id)

@@ -31,7 +31,7 @@ namespace FlashcardApp.Domain.Interfaces
         /// </summary>
         /// <param name="query"></param>
         /// <returns></returns>
-        public Flashcard SearchFlashcards(string query);
+        public IEnumerable<Flashcard> SearchFlashcards(string query);
 
         /// <summary>
         /// Update/change flashcard
