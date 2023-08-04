@@ -25,7 +25,7 @@ namespace FlashcardApp.Tests.FlashcardServiceTests
         public async Task Update_info_NULL_check()
         {
             //Arrange
-            Flashcard card = new() { Id = 5, Question = null, Answer = null };
+            Flashcard card = new() { Id = 1, Question = null, Answer = null };
 
             _flashcardRepo.Setup(x => x.GetFlashcardById(1)).Returns(new Flashcard { Id = 1, Question = "question1", Answer = "answer1" });
 
@@ -39,7 +39,7 @@ namespace FlashcardApp.Tests.FlashcardServiceTests
         public async Task Update_info_emptyString_check()
         {
             //Arrange
-            Flashcard card = new() { Id = 5, Question = "", Answer = "" };
+            Flashcard card = new() { Id = 1, Question = "", Answer = "" };
 
             _flashcardRepo.Setup(x => x.GetFlashcardById(1)).Returns(new Flashcard { Id = 1, Question = "question1", Answer = "answer1" });
 
@@ -72,6 +72,20 @@ namespace FlashcardApp.Tests.FlashcardServiceTests
 
             //Assert
             await Assert.ThrowsAsync<Exception>(async () => await _flashcardService.UpdateFlashcardAsync(5, card));
+        }
+
+        [Fact]
+        public async Task Card_id_missmatch()
+        {
+            //Arrange
+            Flashcard card = new() { Id = 5, Question = "string", Answer = "string" };
+
+            _flashcardRepo.Setup(x => x.GetFlashcardById(1)).Returns(new Flashcard { Id = 1, Question = "question1", Answer = "answer1" });
+
+            //Act
+
+            //Assert
+            await Assert.ThrowsAsync<Exception>(async () => await _flashcardService.UpdateFlashcardAsync(1, card));
         }
     }
 }

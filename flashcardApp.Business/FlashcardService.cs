@@ -50,6 +50,8 @@ namespace flashcardApp.Business
 
         public async Task<Flashcard> UpdateFlashcardAsync(int id, Flashcard flashcard) //TODO add check for correct id before update attempt?
         {
+            if (id != flashcard.Id)
+                throw new Exception("Id missmatch!");
             id = flashcard.Id;
             Flashcard flashcard1 = GetFlashcardById(id);
 
