@@ -48,26 +48,6 @@ namespace flashcardApp.Business
             || x.Answer.Contains(query, StringComparison.OrdinalIgnoreCase));
         }
 
-        /*        public async Task<Flashcard> UpdateFlashcardAsync(int id, Flashcard flashcard) //TODO add check for correct id before update attempt?
-                {
-                    if (id != flashcard.Id)
-                        throw new Exception("Id missmatch!");
-                    id = flashcard.Id;
-                    Flashcard flashcard1 = GetFlashcardById(id);
-
-                    if (flashcard.Question != null && flashcard.Question != string.Empty
-                        && flashcard.Answer != null && flashcard.Answer != string.Empty)
-                    {
-                        flashcard1.Question = flashcard.Question;
-                        flashcard1.Answer = flashcard.Answer;
-                        EFFlashcardRepo.UpdateFlashcard(flashcard1);
-                        await EFFlashcardRepo.SaveChangesAsync();
-
-                        return flashcard1;
-                    }
-                    else throw new Exception("Something went wrong, could not update flashcard. Please check that the Question and Answer fields are not empty");
-                }*/
-
         public async Task<Flashcard> UpdateFlashcardAsync(Flashcard flashcard)
         {
             int id = flashcard.Id;
