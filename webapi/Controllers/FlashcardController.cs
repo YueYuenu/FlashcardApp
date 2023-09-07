@@ -46,9 +46,9 @@ namespace webapi.Controllers
 
         [HttpPut]
         [Route("UpdateFlashcard")]
-        public async Task<IActionResult> UpdateFlashcard(int id, Flashcard flashcard)
+        public async Task<IActionResult> UpdateFlashcard(Flashcard flashcard)
         {
-            return Ok(await _flashcardService.UpdateFlashcardAsync(id, flashcard));
+            return Ok(await _flashcardService.UpdateFlashcardAsync(flashcard));
         }
 
         [HttpDelete]

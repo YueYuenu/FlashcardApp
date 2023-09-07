@@ -13,7 +13,7 @@ namespace FlashcardApp.Tests.FlashcardServiceTests
             _flashcardRepo.Setup(x => x.GetFlashcardById(1)).Returns(new Flashcard { Id = 1, Question = "question1", Answer = "answer1" });
 
             //Act
-            await _flashcardService.UpdateFlashcardAsync(1, card);
+            await _flashcardService.UpdateFlashcardAsync(card);
             Flashcard Updated = _flashcardService.GetFlashcardById(1);
 
             //Assert
@@ -32,7 +32,7 @@ namespace FlashcardApp.Tests.FlashcardServiceTests
             //Act
 
             //Assert
-            await Assert.ThrowsAsync<Exception>(async () => await _flashcardService.UpdateFlashcardAsync(1, card));
+            await Assert.ThrowsAsync<Exception>(async () => await _flashcardService.UpdateFlashcardAsync(card));
         }
 
         [Fact]
@@ -46,7 +46,7 @@ namespace FlashcardApp.Tests.FlashcardServiceTests
             //Act
 
             //Assert
-            await Assert.ThrowsAsync<Exception>(async () => await _flashcardService.UpdateFlashcardAsync(1, card));
+            await Assert.ThrowsAsync<Exception>(async () => await _flashcardService.UpdateFlashcardAsync(card));
         }
 
         [Fact]
@@ -58,7 +58,7 @@ namespace FlashcardApp.Tests.FlashcardServiceTests
             //Act
 
             //Assert
-            await Assert.ThrowsAsync<Exception>(async () => await _flashcardService.UpdateFlashcardAsync(5, card));
+            await Assert.ThrowsAsync<Exception>(async () => await _flashcardService.UpdateFlashcardAsync(card));
         }
 
         [Fact]
@@ -71,7 +71,7 @@ namespace FlashcardApp.Tests.FlashcardServiceTests
             //Act
 
             //Assert
-            await Assert.ThrowsAsync<Exception>(async () => await _flashcardService.UpdateFlashcardAsync(5, card));
+            await Assert.ThrowsAsync<Exception>(async () => await _flashcardService.UpdateFlashcardAsync(card));
         }
 
         [Fact]
@@ -85,7 +85,7 @@ namespace FlashcardApp.Tests.FlashcardServiceTests
             //Act
 
             //Assert
-            await Assert.ThrowsAsync<Exception>(async () => await _flashcardService.UpdateFlashcardAsync(1, card));
+            await Assert.ThrowsAsync<Exception>(async () => await _flashcardService.UpdateFlashcardAsync(card));
         }
     }
 }

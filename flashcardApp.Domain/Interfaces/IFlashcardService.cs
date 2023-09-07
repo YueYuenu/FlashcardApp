@@ -39,7 +39,7 @@ namespace FlashcardApp.Domain.Interfaces
         /// <param name="id"></param>
         /// <param name="flashcard"></param>
         /// <returns></returns>
-        public Task<Flashcard> UpdateFlashcardAsync(int id, Flashcard flashcard);
+        public Task<Flashcard> UpdateFlashcardAsync(Flashcard flashcard);
 
         /// <summary>
         /// Delete a flashcard
