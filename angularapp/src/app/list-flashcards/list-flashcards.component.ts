@@ -2,8 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import Flashcard from '../models/Flashcard';
 import { FlashcardService } from '../services/flashcard.service';
 import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
-import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource as MatTableDataSource } from '@angular/material/table';
+import { MatPaginator as MatPaginator } from '@angular/material/paginator';
 
 @Component({
     selector: 'app-list-flashcards',
