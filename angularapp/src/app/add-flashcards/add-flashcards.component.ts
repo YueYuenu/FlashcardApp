@@ -29,7 +29,7 @@ export class AddFlashcardsComponent implements OnInit {
       question: this.cardForm.get("Question")?.value,
       answer: this.cardForm.get("Answer")?.value,
     };
-    console.log("card add",this.cardAdd) //question and answer are null in db but appear correctly in this log.
+    console.log("card add", this.cardAdd) //question and answer are null in db but appear correctly in this log.
     this.flashcardService.AddCard(this.cardAdd).subscribe(res => {
       if (res.status == 200) { this._snackbar.open("Flashcard was successfully added.", "Close"); }
       else { this._snackbar.open("Something went wrong", "Close"); }
