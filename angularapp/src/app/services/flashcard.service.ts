@@ -26,4 +26,8 @@ export class FlashcardService {
     GetCardsById(cardId: number): Observable<Flashcard> {
         return this.http.get<Flashcard>(this.url + 'GetFlashcardById?id=' + cardId);
     }
+
+    DeleteFlashcard(cardId: number): Observable<any> {
+        return this.http.delete<Flashcard>(this.url + 'DeleteFlashcard?id=' + cardId);
+    }
 }

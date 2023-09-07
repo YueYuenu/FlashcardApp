@@ -12,3 +12,7 @@ div {
 .full-width {
     width: 100%;
 }
+
+.editpagebuttons {
+    margin: 0px 10px 0px 0px;
+}

@@ -22,7 +22,14 @@
             <textarea matInput formControlName="Answer" placeholder=""></textarea>
         </mat-form-field>
     </form>
-    <button mat-raised-button color="primary" (click)="formSubmission()">
-        <span>Edit Flashcard</span>
-    </button>
+
+    <section>
+        <button class="editpagebuttons" mat-raised-button color="primary" (click)="formSubmission()">
+            <span>Edit Flashcard</span>
+        </button>
+        <button class="editpagebuttons" mat-raised-button color="warn" (click)="deleteFlashcard()">
+            <span>Delete Flashcard</span>
+        </button>
+    </section>
+
 </div>

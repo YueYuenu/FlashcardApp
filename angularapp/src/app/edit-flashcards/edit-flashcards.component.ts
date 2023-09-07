@@ -71,4 +71,10 @@ export class EditFlashcardsComponent implements OnInit {
       else { this._snackbar.open("Something went wrong", "Close"); }
     });
   }
+
+  deleteFlashcard(){
+     //get id, call service for delete, open snackbar
+     //route back to list
+     console.log("check id to delete", );
+  }
 }
