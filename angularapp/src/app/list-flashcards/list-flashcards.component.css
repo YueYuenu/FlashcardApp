@@ -31,3 +31,8 @@ th {
 .spacer {
     flex: 1 1 auto;
 }
+
+.mat-cell-Nodata {
+    color: white;
+    padding-left: 0.8%;
+}
