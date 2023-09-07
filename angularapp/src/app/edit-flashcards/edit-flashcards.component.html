@@ -4,13 +4,14 @@
     </mat-toolbar>
 </p>
 <div>
-
-    <form class="newCardform" [formGroup]="cardEditForm">
+    <form class="newCardform" [formGroup]="cardEditFormId">
         <mat-form-field class="full-width">
             <mat-label>Id</mat-label>
             <textarea matInput formControlName="Id" placeholder=""></textarea>
         </mat-form-field>
+    </form>
 
+    <form class="newCardform" [formGroup]="cardEditForm">
         <mat-form-field class="full-width">
             <mat-label>Question</mat-label>
             <textarea matInput formControlName="Question" placeholder=""></textarea>

@@ -4,6 +4,7 @@ import { FlashcardService } from '../services/flashcard.service';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource as MatTableDataSource } from '@angular/material/table';
 import { MatPaginator as MatPaginator } from '@angular/material/paginator';
+import { NavigationEnd, Router } from '@angular/router'
 
 @Component({
     selector: 'app-list-flashcards',
@@ -18,11 +19,11 @@ export class ListFlashcardsComponent implements OnInit {
     @ViewChild(MatPaginator) paginator!: MatPaginator;
     @ViewChild(MatSort) sort!: MatSort;
 
-    constructor(private flashcardservice: FlashcardService) { }
+    constructor(private flashcardservice: FlashcardService, private router: Router) { }
 
     ngOnInit(): void {
-        this.flashcardservice.GetAllCards().subscribe(flashcards => {
-            this.flashcards = flashcards; this.dataSource.data = this.flashcards;
+        this.flashcardservice.GetAllCards().subscribe(flashcardslist => {
+            this.flashcards = flashcardslist; this.dataSource.data = this.flashcards;
             console.log(this.flashcards); console.log(this.dataSource.data)
         })
     }
@@ -39,5 +40,9 @@ export class ListFlashcardsComponent implements OnInit {
         if (this.dataSource.paginator) {
             this.dataSource.paginator.firstPage();
         }
+    }
+
+    clickedRows(flashcardId: Flashcard["id"]) {
+        this.router.navigate([`details/${flashcardId}`]);
     }
 }

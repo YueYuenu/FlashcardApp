@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from '../home/home.component';
 import { ListFlashcardsComponent } from '../list-flashcards/list-flashcards.component';
@@ -11,7 +11,8 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'listFlashcards', component: ListFlashcardsComponent },
   { path: 'addFlashcards', component: AddFlashcardsComponent },
-  { path: 'editFlashcards', component: EditFlashcardsComponent },
+  //{ path: 'editFlashcards', component: EditFlashcardsComponent },
+  { path: 'details/:id', component: EditFlashcardsComponent },
   { path: 'deleteFlashcards', component: DeleteFlashcardsComponent },
   { path: '**', pathMatch: 'full', component: PageNotFoundComponent },
 
