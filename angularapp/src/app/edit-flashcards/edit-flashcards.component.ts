@@ -3,7 +3,7 @@ import { FlashcardService } from '../services/flashcard.service';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import Flashcard from '../models/Flashcard';
-import { ActivatedRoute, NavigationEnd, NavigationExtras, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 
 @Component({
@@ -50,12 +50,7 @@ export class EditFlashcardsComponent implements OnInit {
         }
       )
     });
-    this.router.events.subscribe(event => { //This is hecking slow on list reload. is there a better way?!
-      if (event instanceof NavigationEnd)
-        window.location.reload();
-    })
   }
-  //cache get all, then getall again after submit, then reload?
 
   formSubmission() {
     this.cardEditForm
@@ -63,18 +58,19 @@ export class EditFlashcardsComponent implements OnInit {
       id: this.cardEditFormId.get("Id")?.value,
       question: this.cardEditForm.get("Question")?.value,
       answer: this.cardEditForm.get("Answer")?.value,
-    };   
-    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() =>
-      this.router.navigate(['listFlashcards']));
+    };
     this.flashcardService.EditCard(this.cardedit).subscribe(res => {
-      if (res.status == 200) { this._snackbar.open("Flashcard edit succeeded.", "Close"); }
+      if (res.status == 200) { this._snackbar.open("Flashcard edit succeeded.", "Close"), this.router.navigate(['listFlashcards']); }
       else { this._snackbar.open("Something went wrong", "Close"); }
     });
   }
 
-  deleteFlashcard(){
-     //get id, call service for delete, open snackbar
-     //route back to list
-     console.log("check id to delete", );
+  deleteFlashcard() {
+    const cardid = this.cardEditFormId.get("Id")?.value
+    console.log("check id to delete", cardid);
+    this.flashcardService.DeleteFlashcard(cardid).subscribe(res => {
+      if (res.status == 200) { this._snackbar.open("Flashcard deletion succeeded.", "Close"), this.router.navigate(['listFlashcards']); }
+      else { this._snackbar.open("Something went wrong", "Close"); }
+    });
   }
 }
