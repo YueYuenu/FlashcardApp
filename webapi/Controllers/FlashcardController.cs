@@ -53,9 +53,17 @@ namespace webapi.Controllers
 
         [HttpDelete]
         [Route("DeleteFlashcard")]
-        public Task DeleteFlashcard(int id)
+        public async Task<ActionResult> DeleteFlashcard(int id)
         {
-            return _flashcardService.DeleteById(id);
+            try
+            {
+                await _flashcardService.DeleteById(id);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }
