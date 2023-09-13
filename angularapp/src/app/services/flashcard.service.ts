@@ -28,6 +28,6 @@ export class FlashcardService {
     }
 
     DeleteFlashcard(cardId: number): Observable<any> {
-        return this.http.delete<Flashcard>(this.url + 'DeleteFlashcard?id=' + cardId);
+        return this.http.delete<Flashcard>(this.url + 'DeleteFlashcard?id=' + cardId, { observe: 'response' });
     }
 }
