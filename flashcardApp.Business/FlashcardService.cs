@@ -36,10 +36,22 @@ namespace flashcardApp.Business
 
         public Flashcard GetFlashcardById(int id)
         {
-            Flashcard card = EFFlashcardRepo.GetFlashcardById(id);
-            if (card != null)
-                return card;
-            throw new Exception("Something went wrong, card not found"); //TODO make this show on swagger instead of breaking T_T
+            try
+            {
+                Flashcard card = EFFlashcardRepo.GetFlashcardById(id);
+                if (card != null)
+                    return card;
+            }
+            catch (Exception)
+            {
+                throw new Exception("Something went wrong, card not found"); //TODO make this show on swagger instead of breaking T_T
+            }
+            return new Flashcard
+            {
+                Id = 0,
+                Question = "the card was not found",
+                Answer = "i'm a placeholder"
+            };
         }
 
         public IEnumerable<Flashcard> SearchFlashcards(string query)
