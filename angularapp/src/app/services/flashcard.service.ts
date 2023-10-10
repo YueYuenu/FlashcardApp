@@ -27,6 +27,10 @@ export class FlashcardService {
         return this.http.get<Flashcard>(this.url + 'GetFlashcardById?id=' + cardId);
     }
 
+    GetCardsByDeckId(deckId: number): Observable<Flashcard> {
+        return this.http.get<Flashcard>(this.url + 'GetFlashcardByDeckId?id=' + deckId);
+    }
+
     DeleteFlashcard(cardId: number): Observable<any> {
         return this.http.delete<Flashcard>(this.url + 'DeleteFlashcard?id=' + cardId, { observe: 'response' });
     }
