@@ -26,7 +26,7 @@ builder.Services.AddCors(opt =>
 
 builder.Services.AddScoped<IFlashcardService, FlashcardService>()
                 .AddScoped<IEFFlashcardRepo, EFFlashcardRepo>()
-                .AddDbContext<DataContext>();
+                .AddDbContext<DataContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 var app = builder.Build();
 

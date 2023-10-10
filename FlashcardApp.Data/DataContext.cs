@@ -1,35 +1,26 @@
 ﻿using flashcardApp.Domain.Models;
 using FlashcardApp.Domain.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 
 namespace FlashcardApp.Data
 {
     public class DataContext : DbContext
     {
-        private readonly IConfiguration _configuration;
-
         public DbSet<Flashcard> Flashcards { get; set; }
         public DbSet<CardDeck> CardDecks { get; set; }
 
-        //TODO ctor with config not working, and so the connection string cannot be called and needs to be hardcoded. FIX THIS D:
-
-        /*        public DataContext(IConfiguration configuration)
-                {
-                    _configuration = configuration;
-                }
-
-                public DataContext()
-                {
-                }*/
+        public DataContext(DbContextOptions options) : base(options)
+        {
+        }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(
-                "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=FlashcardDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;" +
-                "Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False");
-            /*           optionsBuilder.UseSqlServer(_configuration.GetConnectionString("DefaultConnection"))
-                                     .EnableSensitiveDataLogging();*/
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlServer(
+                    "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=FlashcardDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;" +
+                    "Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False");
+            }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
