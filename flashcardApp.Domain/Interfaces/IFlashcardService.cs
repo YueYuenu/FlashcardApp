@@ -27,6 +27,13 @@ namespace FlashcardApp.Domain.Interfaces
         public Flashcard GetFlashcardById(int id);
 
         /// <summary>
+        /// Get flashcard by its deckId
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public Flashcard GetFlashcardByDeckId(int id);
+
+        /// <summary>
         /// Search flashcard
         /// </summary>
         /// <param name="query"></param>

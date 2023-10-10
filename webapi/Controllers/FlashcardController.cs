@@ -30,6 +30,13 @@ namespace webapi.Controllers
         }
 
         [HttpGet]
+        [Route("GetFlashcardByDeckId")]
+        public IActionResult GetFlashcardByDeckId(int id)
+        {
+            return Ok(_flashcardService.GetFlashcardByDeckId(id));
+        }
+
+        [HttpGet]
         [Route("SearchFlashcards")]
         public IActionResult SearchFlashcards(string query)
         {

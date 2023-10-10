@@ -23,16 +23,21 @@ namespace FlashcardApp.Data
             return _dataContext.Set<Flashcard>().Where(x => x.Id == id).FirstOrDefault();
         }
 
+        public Flashcard GetFlashcardByDeckId(int id)
+        {
+            return _dataContext.Set<Flashcard>().Where(x => x.DeckId == id).FirstOrDefault();
+        }
+
         public IEnumerable<Flashcard> GetFlashcards()
         {
             return _dataContext.Set<Flashcard>();
         }
 
-        /*        public IEnumerable<Flashcard> SearchFlashcards(string query)
-                {
-                    return _dataContext.Set<Flashcard>().Where(x => x.Question.Contains(query) || x.Answer.Contains(query));
-                    //return _dataContext.Set<Flashcard>().Where(x => x.Question.Contains(query, StringComparison.OrdinalIgnoreCase) || x.Answer.Contains(query, StringComparison.OrdinalIgnoreCase));
-                }*/
+        public IEnumerable<Flashcard> SearchFlashcards(string query)
+        {
+            return _dataContext.Set<Flashcard>().Where(x => x.Question.Contains(query) || x.Answer.Contains(query));
+            //return _dataContext.Set<Flashcard>().Where(x => x.Question.Contains(query, StringComparison.OrdinalIgnoreCase) || x.Answer.Contains(query, StringComparison.OrdinalIgnoreCase));
+        }
 
         public Flashcard UpdateFlashcard(Flashcard flashcard)
         {
