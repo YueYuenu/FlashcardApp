@@ -1,7 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics.CodeAnalysis;
 
 namespace FlashcardApp.Domain.Models
 {
+    [ExcludeFromCodeCoverage]
     public class Flashcard
     {
         public int Id { get; set; }
