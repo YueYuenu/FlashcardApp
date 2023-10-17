@@ -1,4 +1,4 @@
-using flashcardApp.Domain.Models;
+using FlashcardApp.Domain.Models;
 
 namespace FlashcardApp.Tests.FlashcardServiceTests
 {
