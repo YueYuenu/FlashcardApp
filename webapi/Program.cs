@@ -1,4 +1,4 @@
-using flashcardApp.Business;
+using FlashcardApp.Business;
 using FlashcardApp.Data;
 using FlashcardApp.Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -25,7 +25,9 @@ builder.Services.AddCors(opt =>
 });
 
 builder.Services.AddScoped<IFlashcardService, FlashcardService>()
+                .AddScoped<IDeckService, DeckService>()
                 .AddScoped<IEFFlashcardRepo, EFFlashcardRepo>()
+                .AddScoped<IEFDeckRepo, IEFDeckRepo>()
                 .AddDbContext<DataContext>(x => x.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 var app = builder.Build();

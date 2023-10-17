@@ -1,5 +1,4 @@
-﻿using flashcardApp.Domain.Models;
-using FlashcardApp.Domain.Models;
+﻿using FlashcardApp.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace FlashcardApp.Data
