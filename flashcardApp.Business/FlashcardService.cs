@@ -54,24 +54,19 @@ namespace FlashcardApp.Business
             };
         }
 
-        public Flashcard GetFlashcardByDeckId(int id)
+        public IEnumerable<Flashcard> GetFlashcardByDeckId(int id)
         {
             try
             {
-                Flashcard card = EFFlashcardRepo.GetFlashcardByDeckId(id); //TODO currently returns only one card, needs to return all cards for that deck
-                if (card != null)
-                    return card;
+                IEnumerable<Flashcard> cards = EFFlashcardRepo.GetFlashcardByDeckId(id); //TODO currently returns only one card, needs to return all cards for that deck
+                if (cards != null)
+                    return cards;
             }
             catch (Exception)
             {
                 throw new Exception("Something went wrong, card not found"); //TODO make this show on swagger instead of breaking T_T
             }
-            return new Flashcard
-            {
-                Id = 0,
-                Question = "the card was not found",
-                Answer = "i'm a placeholder"
-            };
+            throw new Exception("whoops"); //TODO replace this with something decent
         }
 
         public IEnumerable<Flashcard> SearchFlashcards(string query)

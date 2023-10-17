@@ -1,5 +1,6 @@
 ﻿using FlashcardApp.Domain.Interfaces;
 using FlashcardApp.Domain.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace FlashcardApp.Data
 {
@@ -23,14 +24,14 @@ namespace FlashcardApp.Data
             return _dataContext.Set<Flashcard>().Where(x => x.Id == id).FirstOrDefault();
         }
 
-        public Flashcard GetFlashcardByDeckId(int id)
+        public IEnumerable<Flashcard> GetFlashcardByDeckId(int id)
         {
-            return _dataContext.Set<Flashcard>().Where(x => x.DeckId == id).FirstOrDefault();
+            return _dataContext.Set<Flashcard>().Where(x => x.DeckId.Equals(id)).ToList();
         }
 
         public IEnumerable<Flashcard> GetFlashcards()
         {
-            return _dataContext.Set<Flashcard>();
+            return _dataContext.Set<Flashcard>().Include(x => x.CardDeck);
         }
 
         public IEnumerable<Flashcard> SearchFlashcards(string query)
@@ -49,7 +50,7 @@ namespace FlashcardApp.Data
         {
             Flashcard cardToDelete = _dataContext.Set<Flashcard>().Where(x => x.Id == id).FirstOrDefault();
             if (cardToDelete != null) { _dataContext.Remove(cardToDelete); }
-            //else throw new Exception
+            //TODO add something in case ID does not exist
         }
 
         public async Task SaveChangesAsync()
