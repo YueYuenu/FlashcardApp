@@ -7,7 +7,7 @@ namespace webapi.Controllers
     [ApiController]
     public class DeckController : ControllerBase
     {
-        private IDeckService _deckService;
+        private readonly IDeckService _deckService;
 
         public DeckController(IDeckService deckService)
         {
@@ -19,10 +19,6 @@ namespace webapi.Controllers
         public IActionResult GetAllCardDecks()
         {
             return Ok(_deckService.GetCardDecks());
-
-            //TODO System.InvalidOperationException: Unable to resolve service for type
-            //'FlashcardApp.Domain.Interfaces.IDeckService' while attempting to activate
-            //'webapi.Controllers.DeckController'.
         }
     }
 }
