@@ -18,15 +18,16 @@ namespace FlashcardApp.Tests.FlashcardServiceTests
         }
 
         [Fact]
-        public void Card_returns_null()
+        public void Card_Returns_Id0_if_Not_Exists()
         {
             //Arrange
-            _flashcardRepo.Setup(x => x.GetFlashcardById(4)).Returns(value: null);
+            _flashcardRepo.Setup(x => x.GetFlashcardById(4)).Returns(new Flashcard() { Id = 0 });
 
             //Act
+            Flashcard cardId0 = _flashcardService.GetFlashcardById(0);
 
             //Assert
-            Assert.Throws<Exception>(() => _flashcardService.GetFlashcardById(4));
+            Assert.Equal(0, cardId0.Id);
         }
     }
 }

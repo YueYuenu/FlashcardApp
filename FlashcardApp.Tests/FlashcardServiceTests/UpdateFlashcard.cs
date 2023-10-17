@@ -49,7 +49,7 @@ namespace FlashcardApp.Tests.FlashcardServiceTests
             await Assert.ThrowsAsync<Exception>(async () => await _flashcardService.UpdateFlashcardAsync(card));
         }
 
-        [Fact]
+        [Fact] //Nolonger needed?
         public async void No_existing_Flashcard_found()
         {
             //Arrange
@@ -61,7 +61,7 @@ namespace FlashcardApp.Tests.FlashcardServiceTests
             await Assert.ThrowsAsync<Exception>(async () => await _flashcardService.UpdateFlashcardAsync(card));
         }
 
-        [Fact]
+        [Fact] //Nolonger needed?
         public async void Card_is_NULL()
         {
             //Arrange
@@ -74,7 +74,7 @@ namespace FlashcardApp.Tests.FlashcardServiceTests
             await Assert.ThrowsAsync<Exception>(async () => await _flashcardService.UpdateFlashcardAsync(card));
         }
 
-        [Fact]
+        [Fact] //Nolonger needed?
         public async Task Card_id_missmatch()
         {
             //Arrange
