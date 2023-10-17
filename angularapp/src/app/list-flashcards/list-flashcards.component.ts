@@ -13,7 +13,7 @@ import { Router } from '@angular/router'
 })
 export class ListFlashcardsComponent implements OnInit {
     private flashcards: Flashcard[] = [];
-    displayedColumns: string[] = ['Id', 'Question', 'Answer', 'DeckId'];
+    displayedColumns: string[] = ['Id', 'Question', 'Answer', 'DeckId', 'DeckName'];
     public dataSource = new MatTableDataSource<Flashcard>()
 
     @ViewChild(MatPaginator) paginator!: MatPaginator;

@@ -33,7 +33,12 @@
 
                 <ng-container matColumnDef="DeckId">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header> Deck Id</th>
-                    <td mat-cell *matCellDef="let flashcards"> {{flashcards.DeckId}} </td>
+                    <td mat-cell *matCellDef="let flashcards"> {{flashcards.deckId}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="DeckName">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Deck Name</th>
+                    <td mat-cell *matCellDef="let flashcards"> {{flashcards.deckName}} </td>
                 </ng-container>
 
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
