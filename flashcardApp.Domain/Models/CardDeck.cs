@@ -1,5 +1,4 @@
-﻿using flashcardApp.Domain.Models;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace FlashcardApp.Domain.Models
 {

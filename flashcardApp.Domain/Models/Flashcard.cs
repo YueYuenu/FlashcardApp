@@ -1,7 +1,6 @@
-﻿using FlashcardApp.Domain.Models;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace flashcardApp.Domain.Models
+namespace FlashcardApp.Domain.Models
 {
     public class Flashcard
     {
