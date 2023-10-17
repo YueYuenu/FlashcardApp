@@ -1,5 +1,5 @@
-﻿using flashcardApp.Domain.Models;
-using FlashcardApp.Domain.Interfaces;
+﻿using FlashcardApp.Domain.Interfaces;
+using FlashcardApp.Domain.Models;
 
 namespace FlashcardApp.Data
 {
