@@ -12,19 +12,15 @@ namespace FlashcardApp.Data
             _dataContext = dataContext;
         }
 
-        public Task CreateCardDeckAsync(CardDeck cardDeck)
+        public async Task<CardDeck> CreateCardDeckAsync(CardDeck cardDeck)
         {
-            throw new NotImplementedException();
-        }
-
-        public void DeleteDeckById(int id)
-        {
-            throw new NotImplementedException();
+            await _dataContext.AddAsync(cardDeck);
+            return cardDeck;
         }
 
         public CardDeck GetCardDeckById(int id)
         {
-            throw new NotImplementedException();
+            return _dataContext.Set<CardDeck>().Where(x => x.DeckId == id).FirstOrDefault();
         }
 
         public IEnumerable<CardDeck> GetCardDecks()
@@ -32,14 +28,22 @@ namespace FlashcardApp.Data
             return _dataContext.Set<CardDeck>();
         }
 
-        public Task SaveChangesAsync()
+        public CardDeck UpdateCardDeck(CardDeck deck)
         {
-            throw new NotImplementedException();
+            _dataContext.Update<CardDeck>(deck);
+            return deck;
         }
 
-        public void UpdateCardDeck(CardDeck deck)
+        public void DeleteDeckById(int id)
         {
-            throw new NotImplementedException();
+            CardDeck deckToDelete = _dataContext.Set<CardDeck>().Where(x => x.DeckId == id).FirstOrDefault();
+            if (deckToDelete != null) { _dataContext.Remove(deckToDelete); }
+            //TODO add something in case ID does not exist
+        }
+
+        public Task SaveChangesAsync()
+        {
+            return _dataContext.SaveChangesAsync();
         }
     }
 }

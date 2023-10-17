@@ -9,7 +9,7 @@ namespace FlashcardApp.Domain.Interfaces
         /// </summary>
         /// <param name="cardDeck"></param>
         /// <returns></returns>
-        public Task CreateCardDeckAsync(CardDeck cardDeck);
+        public Task<CardDeck> CreateCardDeckAsync(CardDeck cardDeck);
 
         /// <summary>
         /// Get List of card Decks
@@ -28,7 +28,7 @@ namespace FlashcardApp.Domain.Interfaces
         /// Update the card deck
         /// </summary>
         /// <param name="deck"></param>
-        public void UpdateCardDeck(CardDeck deck);
+        public CardDeck UpdateCardDeck(CardDeck deck);
 
         /// <summary>
         /// Delete card deck
