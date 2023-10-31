@@ -44,7 +44,7 @@ namespace FlashcardApp.Business
             }
             catch (Exception)
             {
-                throw new Exception("Something went wrong, card not found"); //TODO make this show on swagger instead of breaking T_T
+                throw new Exception("Something went wrong, card not found");
             }
             return new Flashcard
             {
@@ -58,13 +58,13 @@ namespace FlashcardApp.Business
         {
             try
             {
-                IEnumerable<Flashcard> cards = EFFlashcardRepo.GetFlashcardByDeckId(id); //TODO currently returns only one card, needs to return all cards for that deck
+                IEnumerable<Flashcard> cards = EFFlashcardRepo.GetFlashcardByDeckId(id);
                 if (cards != null)
                     return cards;
             }
             catch (Exception)
             {
-                throw new Exception("Something went wrong, card not found"); //TODO make this show on swagger instead of breaking T_T
+                throw new Exception("Something went wrong, card not found");
             }
             throw new Exception("whoops"); //TODO replace this with something decent
         }

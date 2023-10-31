@@ -44,7 +44,7 @@ namespace FlashcardApp.Business
             }
             catch (Exception)
             {
-                throw new Exception("Something went wrong, deck not found"); //TODO make this show on swagger instead of breaking T_T
+                throw new Exception("Something went wrong, deck not found");
             }
             return new CardDeck
             {

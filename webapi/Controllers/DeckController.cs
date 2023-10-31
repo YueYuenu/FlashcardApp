@@ -24,7 +24,7 @@ namespace webapi.Controllers
             return Ok(_deckService
                 .GetCardDecks()
                 .Select(x => new DeckFlashcardDto(x.DeckName, x.DeckId, x.Flashcards)));
-        } //TODO Fix flascards list so you can actually see which cards are in the deck. atm list is null.
+        }
 
         [HttpGet]
         [Route("GetDeckById")]
