@@ -15,7 +15,7 @@ namespace webapi.Controllers
             _flashcardService = flashcardService;
         }
 
-        public record FlashcardDto(int Id, string Question, string Answer, int DeckId, string DeckName);
+        public record FlashcardDto(int Id, string Question, string Answer, int DeckId);
 
         [HttpGet]
         [Route("GetAllFlashcards")]
@@ -23,7 +23,7 @@ namespace webapi.Controllers
         {
             return Ok(_flashcardService
                 .GetFlashcards()
-                .Select(x => new FlashcardDto(x.Id, x.Question, x.Answer, x.DeckId, x.CardDeck.DeckName))
+                .Select(x => new FlashcardDto(x.Id, x.Question, x.Answer, x.DeckId))
             );
         }
 
@@ -38,7 +38,7 @@ namespace webapi.Controllers
         [Route("GetFlashcardByDeckId")]
         public IActionResult GetFlashcardByDeckId(int id)
         {
-            return Ok(_flashcardService.GetFlashcardByDeckId(id)); //TODO add cardDeckname if needed
+            return Ok(_flashcardService.GetFlashcardByDeckId(id));
         }
 
         [HttpGet]
