@@ -1,6 +1,5 @@
 ﻿using FlashcardApp.Domain.Interfaces;
 using FlashcardApp.Domain.Models;
-using Microsoft.EntityFrameworkCore;
 
 namespace FlashcardApp.Data
 {
@@ -31,7 +30,7 @@ namespace FlashcardApp.Data
 
         public IEnumerable<Flashcard> GetFlashcards()
         {
-            return _dataContext.Set<Flashcard>().Include(x => x.CardDeck);
+            return _dataContext.Set<Flashcard>();
         }
 
         public IEnumerable<Flashcard> SearchFlashcards(string query)
