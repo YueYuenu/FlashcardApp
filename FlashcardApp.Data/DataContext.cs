@@ -24,8 +24,20 @@ namespace FlashcardApp.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<CardDeck>().HasKey(x => x.DeckId);
+            modelBuilder.Entity<Flashcard>().HasKey(x => x.Id);
+
+            modelBuilder.Entity<CardDeck>()
+                .HasMany(x => x.Flashcards)
+                .WithOne()
+                .HasForeignKey(x => x.DeckId)
+                .HasPrincipalKey(x => x.DeckId);
+
+            modelBuilder.Entity<CardDeck>().Navigation(x => x.Flashcards).AutoInclude();
+
             AddCardDecks(modelBuilder);
             AddFlashcards(modelBuilder);
+
             base.OnModelCreating(modelBuilder);
         }
 
