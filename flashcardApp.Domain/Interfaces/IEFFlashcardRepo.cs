@@ -31,7 +31,7 @@ namespace FlashcardApp.Domain.Interfaces
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public IEnumerable<Flashcard> GetFlashcardByDeckId(int id);
+        public IEnumerable<Flashcard> GetFlashcardsByDeckId(int id);
 
         /// <summary>
         /// Search flashcard
