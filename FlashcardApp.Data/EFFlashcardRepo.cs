@@ -23,8 +23,10 @@ namespace FlashcardApp.Data
             return _dataContext.Set<Flashcard>().Where(x => x.Id == id).FirstOrDefault();
         }
 
-        public IEnumerable<Flashcard> GetFlashcardByDeckId(int id)
+        public IEnumerable<Flashcard> GetFlashcardsByDeckId(int id)
         {
+            if (!_dataContext.Set<CardDeck>().Any(x => x.DeckId == id))
+                throw new KeyNotFoundException();
             return _dataContext.Set<Flashcard>().Where(x => x.DeckId.Equals(id)).ToList();
         }
 
