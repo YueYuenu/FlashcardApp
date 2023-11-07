@@ -46,25 +46,20 @@ namespace FlashcardApp.Business
             {
                 throw new Exception("Something went wrong, card not found");
             }
-            return new Flashcard
-            {
-                Id = 0,
-                Question = "the card was not found",
-                Answer = "i'm a placeholder"
-            };
+            throw new Exception("Something went wrong");
         }
 
         public IEnumerable<Flashcard> GetFlashcardByDeckId(int id)
         {
             try
             {
-                IEnumerable<Flashcard> cards = EFFlashcardRepo.GetFlashcardByDeckId(id);
+                IEnumerable<Flashcard> cards = EFFlashcardRepo.GetFlashcardsByDeckId(id);
                 if (cards != null)
                     return cards;
             }
             catch (Exception)
             {
-                throw new Exception("Something went wrong, card not found");
+                throw new Exception("Something went wrong, cards not found");
             }
             throw new Exception("whoops"); //TODO replace this with something decent
         }
