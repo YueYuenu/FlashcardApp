@@ -34,6 +34,28 @@ namespace FlashcardApp.Tests.DeckServiceTests
         [Fact]
         public async void DeckName_StringEmpty()
         {
+            //Arrange
+            CardDeck deck = new() { DeckName = "", DeckId = 5 };
+            _deckRepo.Setup(x => x.GetCardDeckById(5)).Returns(new CardDeck() { DeckId = 5, DeckName = "empty test" });
+
+            //Act
+
+            //Assert
+            await Assert.ThrowsAsync<Exception>(async () => await _deckService.UpdateCardDeckAsync(deck));
+        }
+
+        [Fact]
+        public async Task Update_info_NULL_check()
+        {
+            //Arrange
+            CardDeck card = new() { DeckId = 1, DeckName = null };
+
+            _deckRepo.Setup(x => x.GetCardDeckById(1)).Returns(new CardDeck { DeckId = 1, DeckName = "nullTest" });
+
+            //Act
+
+            //Assert
+            await Assert.ThrowsAsync<Exception>(async () => await _deckService.UpdateCardDeckAsync(card));
         }
     }
 }
