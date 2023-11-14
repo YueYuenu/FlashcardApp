@@ -6,15 +6,17 @@ import { AddFlashcardsComponent } from '../add-flashcards/add-flashcards.compone
 import { EditFlashcardsComponent } from '../edit-flashcards/edit-flashcards.component';
 import { DeleteFlashcardsComponent } from '../delete-flashcards/delete-flashcards.component';
 import { PageNotFoundComponent } from '../page-not-found/page-not-found.component';
+import { ListDecksComponent } from '../list-decks/list-decks.component';
+import { EditCardDeckComponent } from '../edit-card-deck/edit-card-deck.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'listFlashcards', component: ListFlashcardsComponent },
-  { path: 'addFlashcards', component: AddFlashcardsComponent },
-  //{path: 'listFlashdecks', component: },
-  //{ path: 'editFlashcards', component: EditFlashcardsComponent },
-  { path: 'details/:id', component: EditFlashcardsComponent },
-  { path: 'deleteFlashcards', component: DeleteFlashcardsComponent },
+  { path: 'flashcardslist', component: ListFlashcardsComponent },
+  { path: 'add-flashcards', component: AddFlashcardsComponent },
+  { path: 'decklist', component: ListDecksComponent},
+  { path: 'carddetails/:id', component: EditFlashcardsComponent },
+  { path: 'deckdetails/:id', component: EditCardDeckComponent},
+  { path: 'deleteflashcards', component: DeleteFlashcardsComponent },
   { path: '**', pathMatch: 'full', component: PageNotFoundComponent },
 
 ]
