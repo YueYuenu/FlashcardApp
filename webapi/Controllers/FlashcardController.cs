@@ -28,28 +28,18 @@ namespace webapi.Controllers
         }
 
         [HttpGet]
-        [Route("Id")]
-        public IActionResult GetFlashcard(int id)
-        {
-            return Ok(_flashcardService.GetFlashcardById(id));
-        }
+        [Route("{id}")]
+        public IActionResult GetFlashcard(int id) => Ok(_flashcardService.GetFlashcardById(id));
 
         [HttpGet]
         [Route("DeckId")]
-        public IActionResult GetFlashcardByDeckId(int id)
-        {
-            return Ok(_flashcardService.GetFlashcardByDeckId(id));
-        }
+        public IActionResult GetFlashcardByDeckId(int id) => Ok(_flashcardService.GetFlashcardByDeckId(id));
 
         [HttpGet]
         [Route("Search")]
-        public IActionResult SearchFlashcards(string query)
-        {
-            return Ok(_flashcardService.SearchFlashcards(query));
-        }
+        public IActionResult SearchFlashcards(string query) => Ok(_flashcardService.SearchFlashcards(query));
 
         [HttpPost]
-        [Route("Create")]
         public async Task<IActionResult> CreateFlashcard([FromBody] Flashcard flashcard)
         {
             if (flashcard == null) { return BadRequest(); }
@@ -57,14 +47,9 @@ namespace webapi.Controllers
         }
 
         [HttpPut]
-        [Route("Update")]
-        public async Task<IActionResult> UpdateFlashcard(Flashcard flashcard)
-        {
-            return Ok(await _flashcardService.UpdateFlashcardAsync(flashcard));
-        }
+        public async Task<IActionResult> UpdateFlashcard(Flashcard flashcard) => Ok(await _flashcardService.UpdateFlashcardAsync(flashcard));
 
         [HttpDelete]
-        [Route("Delete")]
         public async Task<ActionResult> DeleteFlashcard(int id)
         {
             try
