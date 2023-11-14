@@ -37,7 +37,7 @@ namespace FlashcardApp.Data
 
         public CardDeck UpdateCardDeck(CardDeck deck)
         {
-            _dataContext.Update<CardDeck>(deck);
+            _dataContext.Update(deck);
             return deck;
         }
 
