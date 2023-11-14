@@ -3,11 +3,11 @@
 namespace FlashcardApp.Domain.Models
 {
     [ExcludeFromCodeCoverage]
-    public class Flashcard
+    public class CardDeck
     {
-        public int Id { get; set; }
-        public string Question { get; set; }
-        public string Answer { get; set; }
         public int DeckId { get; set; }
+        public string DeckName { get; set; }
+
+        public virtual ICollection<Flashcard> Flashcards { get; set; }
     }
 }

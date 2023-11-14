@@ -1,6 +1,6 @@
 ﻿global using Moq;
 global using Xunit;
-using flashcardApp.Business;
+using FlashcardApp.Business;
 using FlashcardApp.Domain.Interfaces;
 
 namespace FlashcardApp.Tests.FlashcardServiceTests

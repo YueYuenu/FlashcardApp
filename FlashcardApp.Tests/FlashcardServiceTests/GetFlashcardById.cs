@@ -1,4 +1,4 @@
-﻿using flashcardApp.Domain.Models;
+﻿using FlashcardApp.Domain.Models;
 
 namespace FlashcardApp.Tests.FlashcardServiceTests
 {
@@ -18,10 +18,22 @@ namespace FlashcardApp.Tests.FlashcardServiceTests
         }
 
         [Fact]
-        public void Card_returns_null()
+        public void DeckId_flashcardList_is_NULL()
         {
             //Arrange
-            _flashcardRepo.Setup(x => x.GetFlashcardById(4)).Returns(value: null);
+
+            //Act
+            _flashcardRepo.Setup(x => x.GetFlashcardById(4)).Returns((Flashcard)null);
+
+            //Assert
+            Assert.Throws<Exception>(() => _flashcardService.GetFlashcardById(4));
+        }
+
+        [Fact]
+        public void Card_Returns_Id0_if_Not_Exists()
+        {
+            //Arrange
+            _flashcardRepo.Setup(x => x.GetFlashcardById(4)).Throws(new Exception());
 
             //Act
 

@@ -1,7 +1,7 @@
-﻿using flashcardApp.Domain.Models;
-using FlashcardApp.Domain.Interfaces;
+﻿using FlashcardApp.Domain.Interfaces;
+using FlashcardApp.Domain.Models;
 
-namespace flashcardApp.Business
+namespace FlashcardApp.Business
 {
     public class FlashcardService : IFlashcardService
     {
@@ -44,14 +44,24 @@ namespace flashcardApp.Business
             }
             catch (Exception)
             {
-                throw new Exception("Something went wrong, card not found"); //TODO make this show on swagger instead of breaking T_T
+                throw new Exception("Something went wrong, card not found");
             }
-            return new Flashcard
+            throw new Exception("Something went wrong");
+        }
+
+        public IEnumerable<Flashcard> GetFlashcardByDeckId(int id)
+        {
+            try
             {
-                Id = 0,
-                Question = "the card was not found",
-                Answer = "i'm a placeholder"
-            };
+                IEnumerable<Flashcard> cards = EFFlashcardRepo.GetFlashcardsByDeckId(id);
+                if (cards != null)
+                    return cards;
+            }
+            catch (Exception)
+            {
+                throw new Exception("Something went wrong, cards not found");
+            }
+            throw new Exception("whoops"); //TODO replace this with something decent
         }
 
         public IEnumerable<Flashcard> SearchFlashcards(string query)

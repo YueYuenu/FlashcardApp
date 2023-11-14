@@ -11,6 +11,7 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'listFlashcards', component: ListFlashcardsComponent },
   { path: 'addFlashcards', component: AddFlashcardsComponent },
+  //{path: 'listFlashdecks', component: },
   //{ path: 'editFlashcards', component: EditFlashcardsComponent },
   { path: 'details/:id', component: EditFlashcardsComponent },
   { path: 'deleteFlashcards', component: DeleteFlashcardsComponent },

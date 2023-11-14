@@ -1,10 +1,10 @@
-﻿using flashcardApp.Domain.Models;
-using FlashcardApp.Domain.Interfaces;
+﻿using FlashcardApp.Domain.Interfaces;
+using FlashcardApp.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace webapi.Controllers
 {
-    [Route("api/FlashcardController")]
+    [Route("api/flashcards")]
     [ApiController]
     public class FlashcardController : ControllerBase
     {
@@ -15,29 +15,41 @@ namespace webapi.Controllers
             _flashcardService = flashcardService;
         }
 
+        public record FlashcardDto(int Id, string Question, string Answer, int DeckId);
+
         [HttpGet]
-        [Route("GetAllFlashcards")]
+        [Route("")]
         public IActionResult GetAllFlashcards()
         {
-            return Ok(_flashcardService.GetFlashcards());
+            return Ok(_flashcardService
+                .GetFlashcards()
+                .Select(x => new FlashcardDto(x.Id, x.Question, x.Answer, x.DeckId))
+            );
         }
 
         [HttpGet]
-        [Route("GetFlashcardById")]
+        [Route("Id")]
         public IActionResult GetFlashcard(int id)
         {
             return Ok(_flashcardService.GetFlashcardById(id));
         }
 
         [HttpGet]
-        [Route("SearchFlashcards")]
+        [Route("DeckId")]
+        public IActionResult GetFlashcardByDeckId(int id)
+        {
+            return Ok(_flashcardService.GetFlashcardByDeckId(id));
+        }
+
+        [HttpGet]
+        [Route("Search")]
         public IActionResult SearchFlashcards(string query)
         {
             return Ok(_flashcardService.SearchFlashcards(query));
         }
 
         [HttpPost]
-        [Route("CreateFlashcard")]
+        [Route("Create")]
         public async Task<IActionResult> CreateFlashcard([FromBody] Flashcard flashcard)
         {
             if (flashcard == null) { return BadRequest(); }
@@ -45,14 +57,14 @@ namespace webapi.Controllers
         }
 
         [HttpPut]
-        [Route("UpdateFlashcard")]
+        [Route("Update")]
         public async Task<IActionResult> UpdateFlashcard(Flashcard flashcard)
         {
             return Ok(await _flashcardService.UpdateFlashcardAsync(flashcard));
         }
 
         [HttpDelete]
-        [Route("DeleteFlashcard")]
+        [Route("Delete")]
         public async Task<ActionResult> DeleteFlashcard(int id)
         {
             try

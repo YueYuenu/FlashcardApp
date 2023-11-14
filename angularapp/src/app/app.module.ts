@@ -14,6 +14,7 @@ import { EditFlashcardsComponent } from './edit-flashcards/edit-flashcards.compo
 import { DeleteFlashcardsComponent } from './delete-flashcards/delete-flashcards.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ListDecksComponent } from './list-decks/list-decks.component';
 
 @NgModule({
     declarations: [
@@ -24,7 +25,8 @@ import { ReactiveFormsModule } from '@angular/forms';
         AddFlashcardsComponent,
         EditFlashcardsComponent,
         DeleteFlashcardsComponent,
-        PageNotFoundComponent
+        PageNotFoundComponent,
+        ListDecksComponent
     ],
     imports: [
         BrowserModule,

@@ -1,4 +1,4 @@
-﻿using flashcardApp.Domain.Models;
+﻿using FlashcardApp.Domain.Models;
 
 namespace FlashcardApp.Domain.Interfaces
 {
@@ -25,6 +25,13 @@ namespace FlashcardApp.Domain.Interfaces
         /// <param name="id"></param>
         /// <returns></returns>
         public Flashcard GetFlashcardById(int id);
+
+        /// <summary>
+        /// Get flashcard by its deckId
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public IEnumerable<Flashcard> GetFlashcardByDeckId(int id);
 
         /// <summary>
         /// Search flashcard
