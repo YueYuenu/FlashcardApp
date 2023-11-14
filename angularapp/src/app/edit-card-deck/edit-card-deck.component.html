@@ -1,1 +1,30 @@
-<p>edit-card-deck works!</p>
+<p>
+    <mat-toolbar>
+        <span>Edit Deck</span>
+    </mat-toolbar>
+</p>
+<div>
+    <form class="newDeckform" [formGroup]="deckEditFormId">
+        <mat-form-field class="full-width">
+            <mat-label>Deck Id</mat-label>
+            <textarea matInput formControlName="deckId" placeholder=""></textarea>
+        </mat-form-field>
+    </form>
+
+    <form class="newDeckform" [formGroup]="newDeckform">
+        <mat-form-field class="full-width">
+            <mat-label>Deck Name</mat-label>
+            <textarea matInput formControlName="deckName" placeholder=""></textarea>
+        </mat-form-field>
+    </form>
+
+    <section>
+        <button class="editpagebuttons" mat-raised-button color="primary" (click)="formSubmission()">
+            <span>Edit Deck</span>
+        </button>
+        <button class="editpagebuttons" mat-raised-button color="warn" (click)="deleteFlashcard()">
+            <span>Delete Deck</span>
+        </button>
+    </section>
+
+</div>

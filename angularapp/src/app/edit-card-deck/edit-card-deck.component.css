@@ -1,0 +1,18 @@
+div {
+    margin: 2%;
+    color: white;
+}
+
+.newCardform {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.editpagebuttons {
+    margin: 0px 10px 0px 0px;
+}
