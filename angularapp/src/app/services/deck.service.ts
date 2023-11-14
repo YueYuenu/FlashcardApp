@@ -18,6 +18,10 @@ export class DeckService {
   GetDeckById(deckId: number): Observable<CardDeck> {
     return this.http.get<CardDeck>(this.url + deckId);
   }
+    
+  GetDeckByFlashcardId(cardId: number): Observable<CardDeck> {
+    return this.http.get<CardDeck>(this.url + 'cardid?id=' + cardId);
+  }
 
   CreateCardDeck(carddeck: CardDeck): Observable<any>{
     return this.http.post<CardDeck>(this.url, carddeck, {observe: 'response'})
