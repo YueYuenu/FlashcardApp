@@ -24,6 +24,14 @@ builder.Services.AddCors(opt =>
       });
 });
 
+// Enforce lowercase routing.
+builder.Services.Configure<RouteOptions>(options =>
+{
+    options.AppendTrailingSlash = true;
+    options.LowercaseUrls = true;
+    options.LowercaseQueryStrings = true;
+});
+
 builder.Services.AddScoped<IFlashcardService, FlashcardService>()
                 .AddScoped<IDeckService, DeckService>()
                 .AddScoped<IEFFlashcardRepo, EFFlashcardRepo>()
@@ -32,8 +40,8 @@ builder.Services.AddScoped<IFlashcardService, FlashcardService>()
 
 var app = builder.Build();
 
-// use automatic migration
-// will create the database if it does not already exist
+// Use automatic migration
+// Will create the database if it does not already exist
 using (var scope = app.Services.CreateScope())
 {
     try
