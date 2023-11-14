@@ -1,6 +1,4 @@
-﻿using FlashcardApp.Domain.Models;
-
-namespace FlashcardApp.Tests.DeckServiceTests
+﻿namespace FlashcardApp.Tests.DeckServiceTests
 {
     public class GetAllCardDecks : Base
     {
@@ -8,18 +6,12 @@ namespace FlashcardApp.Tests.DeckServiceTests
         public void Get_List_of_Decks()
         {
             //Arrange
-            List<CardDeck> list = new()
-            {
-                new CardDeck {DeckId = 1, DeckName = "deck1"},
-                new CardDeck {DeckId = 2, DeckName = "deck2"},
-                new CardDeck {DeckId = 3, DeckName = "deck3"}
-            };
 
-            _deckRepo.Setup(x => x.GetCardDecks()).Returns(list.AsQueryable());
+            _deckRepo.Setup(x => x.GetCardDecks()).Returns(Decks);
             //Act
 
             //Assert
-            Assert.Equal(3, _deckService.GetCardDecks().Count());
+            Assert.Equal(5, _deckService.GetCardDecks().Count());
         }
     }
 }
