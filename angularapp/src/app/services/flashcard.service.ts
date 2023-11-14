@@ -8,30 +8,30 @@ import { environment } from '../../environments/environment';
     providedIn: 'root'
 })
 export class FlashcardService {
-    url: string = environment.apiUrl + 'FlashcardController/';
+    url: string = environment.apiUrl + 'flashcards/';
     constructor(private http: HttpClient) { }
 
     EditCard(editFlashcard: Flashcard): Observable<any> {
-        return this.http.put<Flashcard>(this.url + 'UpdateFlashcard', editFlashcard, { observe: 'response' });
+        return this.http.put<Flashcard>(this.url + 'update', editFlashcard, { observe: 'response' });
     }
 
     AddCard(flashcard: Flashcard): Observable<any> {
-        return this.http.post<Flashcard>(this.url + 'CreateFlashcard', flashcard, { observe: 'response' });
+        return this.http.post<Flashcard>(this.url + 'create', flashcard, { observe: 'response' });
     }
 
     GetAllCards(): Observable<Flashcard[]> {
-        return this.http.get<Flashcard[]>(this.url + 'GetAllFlashcards');
+        return this.http.get<Flashcard[]>(this.url + '');
     }
 
     GetCardsById(cardId: number): Observable<Flashcard> {
-        return this.http.get<Flashcard>(this.url + 'GetFlashcardById?id=' + cardId);
+        return this.http.get<Flashcard>(this.url + 'id?id=' + cardId);
     }
 
     GetCardsByDeckId(deckId: number): Observable<Flashcard> {
-        return this.http.get<Flashcard>(this.url + 'GetFlashcardByDeckId?id=' + deckId);
+        return this.http.get<Flashcard>(this.url + 'deckid?id=' + deckId);
     }
 
     DeleteFlashcard(cardId: number): Observable<any> {
-        return this.http.delete<Flashcard>(this.url + 'DeleteFlashcard?id=' + cardId, { observe: 'response' });
+        return this.http.delete<Flashcard>(this.url + 'delete?id=' + cardId, { observe: 'response' });
     }
 }
