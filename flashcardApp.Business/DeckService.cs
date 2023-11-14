@@ -46,11 +46,7 @@ namespace FlashcardApp.Business
             {
                 throw new Exception("Something went wrong, deck not found");
             }
-            return new CardDeck
-            {
-                DeckId = 1,
-                DeckName = "fubar deck",
-            };
+            throw new Exception("Something went wrong, deck not found");
         }
 
         public IEnumerable<CardDeck> SearchCardDecks(string query)
