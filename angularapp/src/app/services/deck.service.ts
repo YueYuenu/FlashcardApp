@@ -11,7 +11,7 @@ export class DeckService {
   url: string = environment.apiUrl + 'decks/';
   constructor(private http: HttpClient) { }
 
-  GetAllCards(): Observable<CardDeck[]> {
+  GetAllCardDecks(): Observable<CardDeck[]> {
     return this.http.get<CardDeck[]>(this.url);
   }
   
