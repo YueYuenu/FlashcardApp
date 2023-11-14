@@ -6,6 +6,10 @@
 <div>
     <form class="newCardform" [formGroup]="cardEditFormId">
         <mat-form-field class="full-width">
+            <mat-label>Deck Name</mat-label>
+            <textarea matInput formControlName="deckName" placeholder=""></textarea>
+        </mat-form-field>
+        <mat-form-field class="full-width">
             <mat-label>Id</mat-label>
             <textarea matInput formControlName="Id" placeholder=""></textarea>
         </mat-form-field>

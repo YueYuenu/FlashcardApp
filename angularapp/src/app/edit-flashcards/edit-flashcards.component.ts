@@ -5,6 +5,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import Flashcard from '../models/Flashcard';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
+import { DeckService } from '../services/deck.service';
+import CardDeck from '../models/CardDeck';
 
 @Component({
   selector: 'app-edit-flashcards',
@@ -19,11 +21,14 @@ export class EditFlashcardsComponent implements OnInit {
   cardEditFormId!: FormGroup;
   cardedit!: Flashcard;
   card$?: Observable<Flashcard>;
+  deck$?: Observable<CardDeck>;
 
-  constructor(private flashcardService: FlashcardService, private formbuilder: FormBuilder,
+
+  constructor(private flashcardService: FlashcardService, private deckservice: DeckService, private formbuilder: FormBuilder,
     private _snackbar: MatSnackBar, private route: ActivatedRoute, private router: Router) {
     this.cardEditFormId = this.formbuilder.group({
-      Id: new FormControl('')
+      Id: new FormControl(''),
+      deckName: new FormControl('')
     })
     this.cardEditForm = this.formbuilder.group({
       Question: new FormControl('', Validators.required),
@@ -35,20 +40,29 @@ export class EditFlashcardsComponent implements OnInit {
   ngOnInit(): void {
     this.cardEditFormId.disable();
     this.cardIdSub = this.route.params.subscribe(
-      params => this.card$ = this.flashcardService.GetCardsById(params['id']),
+      params => {
+        this.card$ = this.flashcardService.GetCardsById(params['id']),
+        this.deck$ = this.deckservice.GetDeckByFlashcardId(params['id'])
+    }
     );
+    this.deck$?.subscribe(deckpatch => this.cardEditFormId.patchValue(
+      { deckName: deckpatch.deckName}
+    ))
+
     this.card$?.subscribe(flashcardpatch => {
       this.cardEditFormId.patchValue(
         {
-          Id: flashcardpatch.id
+          Id: flashcardpatch.id,
         }
       )
+
       this.cardEditForm.patchValue(
         {
           Question: flashcardpatch.question,
           Answer: flashcardpatch.answer
         }
       )
+      
     });
   }
 
