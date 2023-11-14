@@ -25,6 +25,13 @@ namespace FlashcardApp.Domain.Interfaces
         public CardDeck GetCardDeckById(int id);
 
         /// <summary>
+        /// Search card decks
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns></returns>
+        public IEnumerable<CardDeck> SearchCardDecks(string query);
+
+        /// <summary>
         /// Update the card deck
         /// </summary>
         /// <param name="deck"></param>

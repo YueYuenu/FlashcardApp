@@ -20,7 +20,14 @@ namespace FlashcardApp.Data
 
         public CardDeck GetCardDeckById(int id)
         {
+            if (!_dataContext.Set<CardDeck>().Any(x => x.DeckId == id))
+                throw new KeyNotFoundException();
             return _dataContext.Set<CardDeck>().Where(x => x.DeckId == id).FirstOrDefault();
+        }
+
+        public IEnumerable<CardDeck> SearchCardDecks(string query)
+        {
+            return GetCardDecks().Where(x => x.DeckName.Contains(query, StringComparison.OrdinalIgnoreCase));
         }
 
         public IEnumerable<CardDeck> GetCardDecks()
