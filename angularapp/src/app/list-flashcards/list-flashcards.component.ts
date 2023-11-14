@@ -42,6 +42,6 @@ export class ListFlashcardsComponent implements OnInit {
     }
 
     clickedRows(flashcardId: Flashcard["id"]) {
-        this.router.navigate([`details/${flashcardId}`]);
+        this.router.navigate([`carddetails/${flashcardId}`]);
     }
 }

@@ -1,0 +1,33 @@
+.listBody {
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+table {
+    width: 100%;
+}
+
+.spacer {
+    flex: 1 1 auto;
+}
+
+.deckSearch {
+    flex: 0.1 0.1 auto;
+    padding: 20px 0px 0px 0px;
+    font-size: small;
+}
+
+.mat-elevation-z8 {
+    flex: 1 1 auto;
+}
+
+.spacer {
+    flex: 1 1 auto;
+}
+
+.mat-cell-Nodata {
+    color: white;
+    padding-left: 0.8%;
+}
