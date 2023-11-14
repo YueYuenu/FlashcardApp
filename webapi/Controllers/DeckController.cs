@@ -30,6 +30,10 @@ namespace webapi.Controllers
         public IActionResult GetCardDeckById(int id) => Ok(_deckService.GetCardDeckById(id));
 
         [HttpGet]
+        [Route("cardid")]
+        public IActionResult GetCardDeckByFlashcardId(int id) => Ok(_deckService.GetCardDeckByFlashcardId(id));
+
+        [HttpGet]
         [Route("Search")]
         public IActionResult SearchCardDecks(string query) => Ok(_deckService.SearchCardDecks(query));
 

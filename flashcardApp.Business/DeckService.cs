@@ -49,6 +49,11 @@ namespace FlashcardApp.Business
             throw new Exception("Something went wrong, deck not found");
         }
 
+        public CardDeck GetCardDeckByFlashcardId(int id)
+        {
+            return EFDeckRepo.GetCardDeckByFlashcardId(id);
+        }
+
         public IEnumerable<CardDeck> SearchCardDecks(string query)
         {
             return GetCardDecks().Where(x => x.DeckName.Contains(query, StringComparison.OrdinalIgnoreCase));

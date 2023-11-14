@@ -25,6 +25,12 @@ namespace FlashcardApp.Data
             return _dataContext.Set<CardDeck>().Where(x => x.DeckId == id).FirstOrDefault();
         }
 
+        public CardDeck GetCardDeckByFlashcardId(int id)
+        {
+            Flashcard card = _dataContext.Set<Flashcard>().Where(x => x.Id == id).FirstOrDefault();
+            return _dataContext.Set<CardDeck>().Where(x => x.DeckId == card.DeckId).FirstOrDefault();
+        }
+
         public IEnumerable<CardDeck> SearchCardDecks(string query)
         {
             return GetCardDecks().Where(x => x.DeckName.Contains(query, StringComparison.OrdinalIgnoreCase));
