@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace webapi.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/decks")]
     [ApiController]
     public class DeckController : ControllerBase
     {
@@ -18,7 +18,7 @@ namespace webapi.Controllers
         public record DeckFlashcardDto(string DeckName, int DeckId, ICollection<Flashcard> Flashcards);
 
         [HttpGet]
-        [Route("GetAllCardDecks")]
+        [Route("")]
         public IActionResult GetAllCardDecks()
         {
             return Ok(_deckService
@@ -27,29 +27,36 @@ namespace webapi.Controllers
         }
 
         [HttpGet]
-        [Route("GetDeckById")]
+        [Route("Id")]
         public IActionResult GetCardDeckById(int id)
         {
             return Ok(_deckService.GetCardDeckById(id));
         }
 
+        [HttpGet]
+        [Route("Search")]
+        public IActionResult SearchCardDecks(string query)
+        {
+            return Ok(_deckService.SearchCardDecks(query));
+        }
+
         [HttpPost]
-        [Route("CreateFlashcard")]
-        public async Task<IActionResult> CreateFlashcard([FromBody] CardDeck cardDeck)
+        [Route("Create")]
+        public async Task<IActionResult> CreateCardDeck([FromBody] CardDeck cardDeck)
         {
             if (cardDeck == null) { return BadRequest(); }
             return Ok(await _deckService.CreateCardDeckAsync(cardDeck));
         }
 
         [HttpPut]
-        [Route("UpdateCardDeck")]
+        [Route("Update")]
         public async Task<IActionResult> UpdateFlashcard(CardDeck cardDeck)
         {
             return Ok(await _deckService.UpdateCardDeckAsync(cardDeck));
         }
 
         [HttpDelete]
-        [Route("DeleteCardDeck")]
+        [Route("Delete")]
         public async Task<ActionResult> DeleteFlashcard(int id)
         {
             try
