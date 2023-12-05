@@ -19,8 +19,8 @@ export class FlashcardService {
         return this.http.get<Flashcard>(this.url + cardId);
     }
 
-    GetCardsByDeckId(deckId: number): Observable<Flashcard> {
-        return this.http.get<Flashcard>(this.url + 'deckid?id=' + deckId);
+    GetCardsByDeckId(deckId: number): Observable<Flashcard[]> {
+        return this.http.get<Flashcard[]>(this.url + 'deckid?id=' + deckId);
     }
 
     SearchFlashcards(query: string): Observable<Flashcard[]>{
