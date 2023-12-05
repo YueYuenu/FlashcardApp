@@ -4,8 +4,13 @@
     </mat-toolbar>
 </p>
 <div>
-
+    <h1 class="deckName">{{deckName}}</h1>
     <form class="newCardform" [formGroup]="cardForm">
+        <mat-form-field class="hidden-deckIdfield">
+            <mat-label>deckId</mat-label>
+            <textarea matInput formControlName="deckId" placeholder=""></textarea>
+        </mat-form-field>
+
         <mat-form-field class="full-width">
             <mat-label>Question</mat-label>
             <textarea matInput formControlName="Question" placeholder=""></textarea>
