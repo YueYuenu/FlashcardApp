@@ -2,6 +2,10 @@
     <span>Deck list</span>
 
     <span class="spacer"></span>
+    <button class="editpagebuttons" mat-raised-button color="primary" routerLink="add-deck">
+        <mat-icon>add</mat-icon>
+        <span>Add a new Deck</span>
+    </button>
     <mat-form-field class="deckSearch" appearance="fill">
         <mat-label>Search</mat-label>
         <input matInput (keyup)="applyFilter($event)" #input />
