@@ -57,18 +57,21 @@ export class EditCardDeckComponent {
       deckName: this.newDeckform.get("deckName")?.value,
 
     };
-    this.deckservice.CreateCardDeck(this.deckedit).subscribe(res => {
+    this.deckservice.UpdateCardDeck(this.deckedit).subscribe(res => {
       if (res.status == 200) { this._snackbar.open("Deck edit succeeded.", "Close"), this.router.navigate(['decklist']); }
       else { this._snackbar.open("Something went wrong", "Close"); }
     });
   }
 
   deleteFlashcard() {
-    const cardid = this.deckEditFormId.get("Id")?.value
-    console.log("check id to delete", cardid);
-    this.deckservice.DeleteCardDeck(cardid).subscribe(res => {
-      if (res.status == 200) { this._snackbar.open("Deck deletion succeeded.", "Close"), this.router.navigate(['decklist']); }
-      else { this._snackbar.open("Something went wrong", "Close"); }
-    });
+    const deckId = this.deckEditFormId.get("deckId")?.value
+    console.log("check id to delete", deckId);
+    if(confirm("Are you sure you want to delete this deck?")){
+      this.deckservice.DeleteCardDeck(deckId).subscribe(res => {
+        if (res.status == 200) { this._snackbar.open("Deck deletion succeeded.", "Close"), this.router.navigate(['decklist']); }
+        else { this._snackbar.open("Something went wrong", "Close"); }
+      });
+    }
+    
   }
 }

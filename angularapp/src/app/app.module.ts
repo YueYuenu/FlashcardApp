@@ -16,6 +16,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { ReactiveFormsModule } from '@angular/forms';
 import { ListDecksComponent } from './list-decks/list-decks.component';
 import { EditCardDeckComponent } from './edit-card-deck/edit-card-deck.component';
+import { AddDeckComponent } from './add-deck/add-deck.component';
 
 @NgModule({
     declarations: [
@@ -28,7 +29,8 @@ import { EditCardDeckComponent } from './edit-card-deck/edit-card-deck.component
         DeleteFlashcardsComponent,
         PageNotFoundComponent,
         ListDecksComponent,
-        EditCardDeckComponent
+        EditCardDeckComponent,
+        AddDeckComponent
     ],
     imports: [
         BrowserModule,
