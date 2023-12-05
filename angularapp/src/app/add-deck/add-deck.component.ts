@@ -3,6 +3,9 @@ import CardDeck from '../models/CardDeck';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { DeckService } from '../services/deck.service';
 import { MatSnackBar as MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
+
+
 
 @Component({
   selector: 'app-add-deck',
@@ -13,7 +16,7 @@ export class AddDeckComponent {
   deckForm!: FormGroup;
   deckAdd!: CardDeck;
 
-  constructor(private deckService: DeckService, private formbuilder: FormBuilder, private _snackbar: MatSnackBar) {
+  constructor(private deckService: DeckService, private formbuilder: FormBuilder, private router: Router, private _snackbar: MatSnackBar) {
     this.deckForm = this.formbuilder.group({
       deckName: new FormControl('', Validators.required),
     })
@@ -27,9 +30,9 @@ export class AddDeckComponent {
     this.deckAdd = {
       deckName: this.deckForm.get("deckName")?.value,
     };
-    console.log("card add", this.deckAdd)
+    console.log("deck add", this.deckAdd)
     this.deckService.CreateCardDeck(this.deckAdd).subscribe(res => {
-      if (res.status == 200) { this._snackbar.open("Flashcard was successfully added.", "Close"); }
+      if (res.status == 200) { this._snackbar.open("deck was successfully added.", "Close"), this.router.navigate(['decklist']);; }
       else { this._snackbar.open("Something went wrong", "Close"); }
     });
   }
