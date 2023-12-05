@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable, Subscription } from 'rxjs';
 import CardDeck from '../models/CardDeck';
 import { DeckService } from '../services/deck.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
@@ -12,16 +12,15 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./edit-card-deck.component.css']
 })
 export class EditCardDeckComponent {
-
-  private deckIdSub: Subscription | undefined;
-
+  @Input() deckId!: number
+  
   newDeckform!: FormGroup;
   deckEditFormId!: FormGroup;
   deckedit!: CardDeck;
   deck$?: Observable<CardDeck>;
 
   constructor(private deckservice: DeckService, private formbuilder: FormBuilder,
-    private _snackbar: MatSnackBar, private route: ActivatedRoute, private router: Router) {
+    private _snackbar: MatSnackBar, private router: Router) {
     this.deckEditFormId = this.formbuilder.group({
       deckId: new FormControl('')
     })
@@ -33,9 +32,7 @@ export class EditCardDeckComponent {
 
   ngOnInit(): void {
     this.deckEditFormId.disable();
-    this.deckIdSub = this.route.params.subscribe(
-      params => this.deck$ = this.deckservice.GetDeckById(params['id']),
-    );
+    this.deck$ = this.deckservice.GetDeckById(this.deckId)
     this.deck$?.subscribe(deckpatch => {
       this.deckEditFormId.patchValue(
         {
@@ -63,7 +60,7 @@ export class EditCardDeckComponent {
     });
   }
 
-  deleteFlashcard() {
+  deleteCardDeck() {
     const deckId = this.deckEditFormId.get("deckId")?.value
     console.log("check id to delete", deckId);
     if(confirm("Are you sure you want to delete this deck?")){
@@ -71,7 +68,6 @@ export class EditCardDeckComponent {
         if (res.status == 200) { this._snackbar.open("Deck deletion succeeded.", "Close"), this.router.navigate(['decklist']); }
         else { this._snackbar.open("Something went wrong", "Close"); }
       });
-    }
-    
+    } 
   }
 }
