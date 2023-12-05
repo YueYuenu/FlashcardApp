@@ -1,4 +1,4 @@
-export default interface Flashcard {
+export default interface CardDeck {
     deckId?: number;
     deckName: string;
 
