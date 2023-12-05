@@ -21,7 +21,7 @@ const routes: Routes = [
   // Decks
   { path: 'decklist', component: ListDecksComponent },
   { path: 'deckdetails/:deckId', component:DeckInfoComponent },
-  { path: 'add-deck', component: AddDeckComponent },
+  { path: 'decklist/add-deck', component: AddDeckComponent },
   { path: 'deckdetails/:deckId/editdeck', component: EditCardDeckComponent },
   { path: '**', pathMatch: 'full', component: PageNotFoundComponent },
 
