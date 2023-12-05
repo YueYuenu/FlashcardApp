@@ -8,7 +8,7 @@ import CardDeck from '../models/CardDeck';
   providedIn: 'root'
 })
 export class DeckService {
-  url: string = environment.apiUrl + 'decks/';
+  url: string = environment.apiUrl + 'decks';
   constructor(private http: HttpClient) { }
 
   GetAllCardDecks(): Observable<CardDeck[]> {
@@ -16,11 +16,11 @@ export class DeckService {
   }
   
   GetDeckById(deckId: number): Observable<CardDeck> {
-    return this.http.get<CardDeck>(this.url + deckId);
+    return this.http.get<CardDeck>(this.url + '/' + deckId);
   }
     
   GetDeckByFlashcardId(cardId: number): Observable<CardDeck> {
-    return this.http.get<CardDeck>(this.url + 'cardid?id=' + cardId);
+    return this.http.get<CardDeck>(this.url + '/cardid?id=' + cardId);
   }
 
   CreateCardDeck(carddeck: CardDeck): Observable<any>{
@@ -32,10 +32,10 @@ export class DeckService {
   }
 
   SearchCardDecks(query: string): Observable<any>{
-    return this.http.get<CardDeck[]>(this.url + 'search?query=' + query)
+    return this.http.get<CardDeck[]>(this.url + '/search?query=' + query)
   }
 
   DeleteCardDeck(deckId: number): Observable<any>{
-    return this.http.delete<CardDeck>(this.url + deckId, {observe: 'response'})
+    return this.http.delete<CardDeck>(this.url + '?id=' + deckId, {observe: 'response'})
   }
 }
