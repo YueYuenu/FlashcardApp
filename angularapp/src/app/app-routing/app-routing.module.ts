@@ -8,11 +8,13 @@ import { DeleteFlashcardsComponent } from '../delete-flashcards/delete-flashcard
 import { PageNotFoundComponent } from '../page-not-found/page-not-found.component';
 import { ListDecksComponent } from '../list-decks/list-decks.component';
 import { EditCardDeckComponent } from '../edit-card-deck/edit-card-deck.component';
+import { AddDeckComponent } from '../add-deck/add-deck.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'flashcardslist', component: ListFlashcardsComponent },
   { path: 'add-flashcards', component: AddFlashcardsComponent },
+  { path: 'add-deck', component: AddDeckComponent},
   { path: 'decklist', component: ListDecksComponent},
   { path: 'carddetails/:id', component: EditFlashcardsComponent },
   { path: 'deckdetails/:id', component: EditCardDeckComponent},
