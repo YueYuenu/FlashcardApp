@@ -1,0 +1,17 @@
+<p>
+    <mat-toolbar>
+        <span>Add a new Deck</span>
+    </mat-toolbar>
+</p>
+<div>
+
+    <form class="newDeckform" [formGroup]="deckForm">
+        <mat-form-field class="full-width">
+            <mat-label>Deck name</mat-label>
+            <textarea matInput formControlName="deckName" placeholder=""></textarea>
+        </mat-form-field>
+    </form>
+    <button mat-raised-button color="primary" (click)="formSubmission()">
+        <span>Add new Deck</span>
+    </button>
+</div>
