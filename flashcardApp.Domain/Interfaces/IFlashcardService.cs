@@ -54,5 +54,12 @@ namespace FlashcardApp.Domain.Interfaces
         /// <param name="id"></param>
         /// <returns></returns>
         public Task DeleteById(int id);
+
+        /// <summary>
+        /// Get randomized flashcard list
+        /// </summary>
+        /// <param name="flashcards"></param>
+        /// <returns></returns>
+        public List<Flashcard> GetRandomizedCards(List<Flashcard> flashcards);
     }
 }

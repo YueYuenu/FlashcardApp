@@ -5,11 +5,14 @@ namespace FlashcardApp.Business
 {
     public class FlashcardService : IFlashcardService
     {
+        private readonly Random _rand;
+
         public IEFFlashcardRepo EFFlashcardRepo { get; }
 
         public FlashcardService(IEFFlashcardRepo eFFlashcardRepo)
         {
             EFFlashcardRepo = eFFlashcardRepo;
+            _rand = new Random();
         }
 
         public async Task<Flashcard> CreateFlashcardAsync(Flashcard flashcard)
@@ -96,6 +99,12 @@ namespace FlashcardApp.Business
                 EFFlashcardRepo.DeleteById(id);
                 await EFFlashcardRepo.SaveChangesAsync();
             }
+        }
+
+        public List<Flashcard> GetRandomizedCards(List<Flashcard> flashcards)
+        {
+            var randomizedFlashcards = flashcards.OrderBy(_ => _rand.Next()).ToList();
+            return randomizedFlashcards;
         }
     }
 }

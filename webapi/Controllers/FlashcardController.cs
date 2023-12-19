@@ -39,6 +39,10 @@ namespace webapi.Controllers
         [Route("Search")]
         public IActionResult SearchFlashcards(string query) => Ok(_flashcardService.SearchFlashcards(query));
 
+        [HttpGet]
+        [Route("Randomize")]
+        public IActionResult GetRandomizedFlashcards(List<Flashcard> flashcards) => Ok(_flashcardService.GetRandomizedCards(flashcards));
+
         [HttpPost]
         public async Task<IActionResult> CreateFlashcard([FromBody] Flashcard flashcard)
         {
