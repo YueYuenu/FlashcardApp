@@ -10,6 +10,7 @@ import { ListDecksComponent } from '../list-decks/list-decks.component';
 import { EditCardDeckComponent } from '../edit-card-deck/edit-card-deck.component';
 import { AddDeckComponent } from '../add-deck/add-deck.component';
 import { DeckInfoComponent } from '../deck-info/deck-info.component';
+import { PractisePageComponent } from '../practise-page/practise-page.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'deckdetails/:deckId/add-flashcards', component: AddFlashcardsComponent },
   { path: 'carddetails/:cardid', component: EditFlashcardsComponent },
   { path: 'deleteflashcards', component: DeleteFlashcardsComponent },
+  { path: 'deckdetails/:deckId/practise', component: PractisePageComponent },
   // Decks
   { path: 'decklist', component: ListDecksComponent },
   { path: 'deckdetails/:deckId', component:DeckInfoComponent },

@@ -11,6 +11,7 @@ import { MatSnackBarModule as MatSnackBarModule } from '@angular/material/snack-
 import { MatFormFieldModule as MatFormFieldModule } from '@angular/material/form-field';
 import { MatTableModule as MatTableModule } from '@angular/material/table'
 import { MatPaginatorModule as MatPaginatorModule } from '@angular/material/paginator';
+import { MatCardModule }  from '@angular/material/card'; 
 
 @NgModule({
   declarations: [],
@@ -28,6 +29,7 @@ import { MatPaginatorModule as MatPaginatorModule } from '@angular/material/pagi
     MatFormFieldModule,
     MatTableModule,
     MatPaginatorModule,
+    MatCardModule,
   ]
 })
 export class AppMaterialModule { }

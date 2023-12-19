@@ -18,6 +18,8 @@ import { ListDecksComponent } from './list-decks/list-decks.component';
 import { EditCardDeckComponent } from './edit-card-deck/edit-card-deck.component';
 import { AddDeckComponent } from './add-deck/add-deck.component';
 import { DeckInfoComponent } from './deck-info/deck-info.component';
+import { PractisePageComponent } from './practise-page/practise-page.component';
+import { ShowFlashcardComponent } from './show-flashcard/show-flashcard.component';
 
 @NgModule({
     declarations: [
@@ -32,7 +34,9 @@ import { DeckInfoComponent } from './deck-info/deck-info.component';
         ListDecksComponent,
         EditCardDeckComponent,
         AddDeckComponent,
-        DeckInfoComponent
+        DeckInfoComponent,
+        PractisePageComponent,
+        ShowFlashcardComponent
     ],
     imports: [
         BrowserModule,
