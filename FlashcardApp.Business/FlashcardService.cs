@@ -100,9 +100,10 @@ namespace FlashcardApp.Business
             }
         }
 
-        public List<Flashcard> GetRandomizedCards(List<Flashcard> flashcards)
+        public List<Flashcard> GetRandomizedCards(int deckId)
         {
-            var randomizedFlashcards = flashcards.OrderBy(_ => _rand.Next()).ToList();
+            IEnumerable<Flashcard> flashcards = EFFlashcardRepo.GetFlashcardsByDeckId(deckId);
+            List<Flashcard> randomizedFlashcards = flashcards.OrderBy(_ => _rand.Next()).ToList();
             return randomizedFlashcards;
         }
     }

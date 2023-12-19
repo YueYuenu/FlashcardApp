@@ -60,6 +60,6 @@ namespace FlashcardApp.Domain.Interfaces
         /// </summary>
         /// <param name="flashcards"></param>
         /// <returns></returns>
-        public List<Flashcard> GetRandomizedCards(List<Flashcard> flashcards);
+        public List<Flashcard> GetRandomizedCards(int deckId);
     }
 }

@@ -41,7 +41,7 @@ namespace webapi.Controllers
 
         [HttpGet]
         [Route("Randomize")]
-        public IActionResult GetRandomizedFlashcards(List<Flashcard> flashcards) => Ok(_flashcardService.GetRandomizedCards(flashcards));
+        public IActionResult GetRandomizedFlashcards(int deckId) => Ok(_flashcardService.GetRandomizedCards(deckId));
 
         [HttpPost]
         public async Task<IActionResult> CreateFlashcard([FromBody] Flashcard flashcard)
