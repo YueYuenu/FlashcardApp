@@ -1,0 +1,12 @@
+<mat-toolbar>
+    <span>Practise!</span>
+</mat-toolbar>
+<div>
+    <ul>
+        <li *ngFor="let card of flashcards">
+            <mat-card class="flashcard-card">
+                <app-show-flashcard [flashcard]="card"></app-show-flashcard>
+            </mat-card>
+        </li>
+    </ul>
+</div>

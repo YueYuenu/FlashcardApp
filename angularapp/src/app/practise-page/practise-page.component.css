@@ -1,0 +1,18 @@
+ul{
+    padding: 0px;
+    width: fit-content;
+}
+
+li{
+    list-style: none;
+    padding: 0px 0px 10px 15px; 
+}
+
+div{
+    height: 86vh;
+    overflow-y: scroll;
+}
+
+.flashcard-card{
+    padding: 3% 3% 0% 3%;
+}
