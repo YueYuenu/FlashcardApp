@@ -1,0 +1,7 @@
+<mat-form-field class="flashcardField">
+    <input matInput type="text" placeholder={{flashcard.question}}>
+</mat-form-field>
+<mat-form-field class="flashcardField">
+    <input matInput placeholder={{flashcard.answer}} [type]="hide ? 'answer' : 'text'">
+    <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+</mat-form-field>
