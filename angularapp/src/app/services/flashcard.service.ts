@@ -24,7 +24,11 @@ export class FlashcardService {
     }
 
     SearchFlashcards(query: string): Observable<Flashcard[]>{
-        return this.http.get<Flashcard[]>(this.url + 'search?query=' + query)
+        return this.http.get<Flashcard[]>(this.url + 'search?query=' + query);
+    }
+
+    RandomizeFlashcards(deckId: number) {
+        return this.http.get<Flashcard[]>(this.url + 'randomize?deckId=' +deckId);
     }
 
     EditCard(editFlashcard: Flashcard): Observable<any> {
