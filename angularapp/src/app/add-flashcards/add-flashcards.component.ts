@@ -54,9 +54,10 @@ export class AddFlashcardsComponent implements OnInit {
       answer: this.cardForm.get("Answer")?.value,
     };
     console.log("card add", this.cardAdd)
-    this.flashcardService.AddCard(this.cardAdd).subscribe(res => {
-      if (res.status == 200) { this._snackbar.open("Flashcard was successfully added.", "Close"); }
-      else { this._snackbar.open("Something went wrong", "Close"); }
+    this.flashcardService.AddCard(this.cardAdd).subscribe({
+      next: res => {
+      if (res.status == 200) { this._snackbar.open("Flashcard was successfully added.", "Close", { duration: 3000 }); }},
+      error: (error) => { this._snackbar.open("Something went wrong", "Close", { duration: 3000 }); }
     });
   }
 }

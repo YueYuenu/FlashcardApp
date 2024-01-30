@@ -31,9 +31,10 @@ export class AddDeckComponent {
       deckName: this.deckForm.get("deckName")?.value,
     };
     console.log("deck add", this.deckAdd)
-    this.deckService.CreateCardDeck(this.deckAdd).subscribe(res => {
-      if (res.status == 200) { this._snackbar.open("deck was successfully added.", "Close"), this.router.navigate(['decklist']);; }
-      else { this._snackbar.open("Something went wrong", "Close"); }
-    });
+    this.deckService.CreateCardDeck(this.deckAdd).subscribe({
+      next: (res) => { if (res.status == 200) { this._snackbar.open("deck was successfully added.", "Close", { duration: 3000 }), 
+      this.router.navigate(['decklist']); }}, 
+      error: (error) => {this._snackbar.open(`Something went wrong, your deckname may already exist.`, "Close", { duration: 3000 });}
+  });
   }
 }
