@@ -20,9 +20,16 @@ namespace FlashcardApp.Business
                     throw new Exception("Something gave null, please check the field and try again");
                 if (cardDeck.DeckName != string.Empty)
                 {
-                    await EFDeckRepo.CreateCardDeckAsync(cardDeck);
-                    await EFDeckRepo.SaveChangesAsync();
-                    return cardDeck;
+                    IEnumerable<CardDeck> match = EFDeckRepo.SearchCardDecks(cardDeck.DeckName);
+                    if (match.Any())
+                        throw new Exception(
+                            "This deckname already exists, please choose a different name.");
+                    else
+                    {
+                        await EFDeckRepo.CreateCardDeckAsync(cardDeck);
+                        await EFDeckRepo.SaveChangesAsync();
+                        return cardDeck;
+                    }
                 }
                 else throw new Exception("Something went wrong, could not create deck. Please check that the name field is not empty");
             }
