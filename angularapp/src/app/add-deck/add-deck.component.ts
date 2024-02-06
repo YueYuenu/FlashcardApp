@@ -35,7 +35,8 @@ export class AddDeckComponent {
     this.deckService.CreateCardDeck(this.deckAdd).subscribe({
       next: (res) => { if (res.status == 200) { this._snackbar.SnackBar("Deck was successfully added."), 
       this.router.navigate(['decklist']); }}, 
-      error: (error) => {this._snackbar.SnackBar("Something went wrong, your deckname may already exist.");}
+      error: (error) => {this._snackbar.SnackBar("Something went wrong, your deckname may already exist.");},
+      complete: () => {}
   });
   }
 }

@@ -58,7 +58,8 @@ export class AddFlashcardsComponent implements OnInit {
     this.flashcardService.AddCard(this.cardAdd).subscribe({
       next: res => {
       if (res.status == 200) { this._snackbar.SnackBar("Flashcard was successfully added."); }},
-      error: (error) => { this._snackbar.SnackBar("Something went wrong"); }
+      error: (error) => { this._snackbar.SnackBar("Something went wrong"); },
+      complete: () => {}
     });
   }
 }

@@ -77,7 +77,8 @@ export class EditFlashcardsComponent implements OnInit {
       next:(res) => {
       if (res.status == 200) { this._snackbar.SnackBar("Flashcard edit succeeded."), 
       this.router.navigate([`deckdetails/${this.deckId}`]); }},
-      error: (error) => { this._snackbar.SnackBar("Something went wrong"); }
+      error: (error) => { this._snackbar.SnackBar("Something went wrong"); },
+      complete: () => {}
     });
   }
 
@@ -90,7 +91,8 @@ export class EditFlashcardsComponent implements OnInit {
         next: (res) => {
         if (res.status == 200) { this._snackbar.SnackBar("Flashcard deletion succeeded."), 
         this.router.navigate([`deckdetails/${this.deckId}`]); }},
-        error: (error) => { this._snackbar.SnackBar("Something went wrong"); }
+        error: (error) => { this._snackbar.SnackBar("Something went wrong"); },
+        complete: () => {}
       });
     }
   }

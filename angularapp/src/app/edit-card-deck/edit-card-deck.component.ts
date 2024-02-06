@@ -57,7 +57,8 @@ export class EditCardDeckComponent {
     this.deckservice.UpdateCardDeck(this.deckedit).subscribe({
       next: (res) => {
        if (res.status == 200) { this._snackbar.SnackBar("Deck edit succeeded."), this.router.navigate(['decklist']); }},
-      error: (error) => { this._snackbar.SnackBar("Something went wrong"); }
+      error: (error) => { this._snackbar.SnackBar("Something went wrong"); },
+      complete: () => {}
       });
   }
 
@@ -68,7 +69,8 @@ export class EditCardDeckComponent {
       this.deckservice.DeleteCardDeck(deckId).subscribe({
         next: (res) => {
         if (res.status == 200) { this._snackbar.SnackBar("Deck deletion succeeded."), this.router.navigate(['decklist']); }},
-        error: (error) => { this._snackbar.SnackBar("Something went wrong"); }
+        error: (error) => { this._snackbar.SnackBar("Something went wrong"); },
+        complete: () => {}
       });
     } 
   }
