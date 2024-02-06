@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FlashcardService } from '../services/flashcard.service';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import Flashcard from '../models/Flashcard';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';

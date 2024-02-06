@@ -4,7 +4,6 @@ import { Observable, Subscription } from 'rxjs';
 import CardDeck from '../models/CardDeck';
 import { DeckService } from '../services/deck.service';
 import { Router } from '@angular/router';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { SnackbarService } from '../services/snackbar.service';
 
 @Component({
