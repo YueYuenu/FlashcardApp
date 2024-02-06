@@ -5,6 +5,7 @@ import CardDeck from '../models/CardDeck';
 import { DeckService } from '../services/deck.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { SnackbarService } from '../services/snackbar.service';
 
 @Component({
   selector: 'app-edit-card-deck',
@@ -20,7 +21,7 @@ export class EditCardDeckComponent {
   deck$?: Observable<CardDeck>;
 
   constructor(private deckservice: DeckService, private formbuilder: FormBuilder,
-    private _snackbar: MatSnackBar, private router: Router) {
+    private _snackbar: SnackbarService, private router: Router) {
     this.deckEditFormId = this.formbuilder.group({
       deckId: new FormControl('')
     })
@@ -54,19 +55,21 @@ export class EditCardDeckComponent {
       deckName: this.newDeckform.get("deckName")?.value,
 
     };
-    this.deckservice.UpdateCardDeck(this.deckedit).subscribe(res => {
-      if (res.status == 200) { this._snackbar.open("Deck edit succeeded.", "Close"), this.router.navigate(['decklist']); }
-      else { this._snackbar.open("Something went wrong", "Close"); }
-    });
+    this.deckservice.UpdateCardDeck(this.deckedit).subscribe({
+      next: (res) => {
+       if (res.status == 200) { this._snackbar.SnackBar("Deck edit succeeded."), this.router.navigate(['decklist']); }},
+      error: (error) => { this._snackbar.SnackBar("Something went wrong"); }
+      });
   }
 
   deleteCardDeck() {
     const deckId = this.deckEditFormId.get("deckId")?.value
     console.log("check id to delete", deckId);
     if(confirm("Are you sure you want to delete this deck?")){
-      this.deckservice.DeleteCardDeck(deckId).subscribe(res => {
-        if (res.status == 200) { this._snackbar.open("Deck deletion succeeded.", "Close"), this.router.navigate(['decklist']); }
-        else { this._snackbar.open("Something went wrong", "Close"); }
+      this.deckservice.DeleteCardDeck(deckId).subscribe({
+        next: (res) => {
+        if (res.status == 200) { this._snackbar.SnackBar("Deck deletion succeeded."), this.router.navigate(['decklist']); }},
+        error: (error) => { this._snackbar.SnackBar("Something went wrong"); }
       });
     } 
   }
